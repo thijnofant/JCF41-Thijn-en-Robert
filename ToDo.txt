@@ -2,12 +2,12 @@
 Het bijhouden hoeveel keer een woord voorkomt in de tekst gesorteren op frequentie. 
 De output moet alsvolgt zijn:
 
-papier:	1
+papier:		1
 drie:		2
 een:		2
 twee:		2
 vier:		2
-hoedje:	3
+hoedje:		3
 van:		3
 
  

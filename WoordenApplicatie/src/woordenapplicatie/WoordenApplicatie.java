@@ -73,4 +73,32 @@ public class WoordenApplicatie extends Application {
         return reVal;
     }
     
+    /**
+     * 
+     * @param stringToCount
+     * @return 
+     */
+    public String frequenceString(String stringToCount){
+        String[] splitWords = stringToCount.split("\n|, |,| ");
+        List<String> sortList = Arrays.asList(splitWords);
+        
+        Map<String, Integer> mp = new HashMap<>();
+        for(String item: sortList){
+            if (mp.keySet().contains(item)) {
+                mp.put(stringToCount, mp.get(item)+1);
+            }
+            else{
+                mp.put(item, 1);
+            }
+        }
+        
+        String reString = "";
+        for (Map.Entry<String, Integer> entrySet : mp.entrySet()) {
+            
+            reString += "\n" + entrySet.getKey() +":     "+entrySet.getValue();            
+        }
+        
+        return reString;
+    }
+    
 }

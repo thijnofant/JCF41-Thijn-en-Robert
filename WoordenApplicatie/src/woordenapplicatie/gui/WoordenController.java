@@ -76,7 +76,8 @@ public class WoordenController implements Initializable {
 
     @FXML
     private void frequentieAction(ActionEvent event) {
-         throw new UnsupportedOperationException("Not supported yet."); 
+         WoordenApplicatie app = new WoordenApplicatie();
+         taOutput.setText(app.frequenceString(taInput.getText()));
     }
 
     @FXML
