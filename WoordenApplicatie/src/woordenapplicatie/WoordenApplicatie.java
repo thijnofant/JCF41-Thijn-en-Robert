@@ -6,6 +6,7 @@
 
 package woordenapplicatie;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -39,16 +40,36 @@ public class WoordenApplicatie extends Application {
     /**
      * 
      * @param stringToCount The string of words that needs to be counted
-     * @param total A bool that decides if it should count the total amount of words or the distinct words
      * @return 
      */
     public String countWords(String stringToCount){
         
         String reVal = "";
-        String[] splitWords = stringToCount.split(" ");
+        String[] splitWords = stringToCount.split("\n|, |,| ");
         reVal += "Totaal aantal woorden:               "+ splitWords.length;
         reVal += "\n";
         reVal += "Aantal verschillende woorden:   "+new HashSet<String>(Arrays.asList(splitWords)).size();
+        return reVal;
+    }
+    
+    /**
+     * 
+     * @param stringToOrder The string of words that is going to be ordered;
+     * @return 
+     */
+    public String orderByRevAlphabet(String stringToOrder){
+        String[] splitWords = stringToOrder.split("\n|, |,| ");
+        List<String> sortList = Arrays.asList(splitWords);
+        
+        Collections.sort(sortList, Collections.reverseOrder());
+        
+        String reVal = "";
+        
+        for (String sortList1 : sortList) {
+            reVal+= "\n" + sortList1;
+                    
+        }
+        
         return reVal;
     }
     

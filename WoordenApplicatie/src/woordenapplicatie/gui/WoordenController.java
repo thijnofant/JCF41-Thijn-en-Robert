@@ -70,7 +70,8 @@ public class WoordenController implements Initializable {
 
     @FXML
     private void sorteerAction(ActionEvent event) {
-         throw new UnsupportedOperationException("Not supported yet."); 
+        WoordenApplicatie app = new WoordenApplicatie();
+         taOutput.setText(app.orderByRevAlphabet(taInput.getText()));
     }
 
     @FXML
