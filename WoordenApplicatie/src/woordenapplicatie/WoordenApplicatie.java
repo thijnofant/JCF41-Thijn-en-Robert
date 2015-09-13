@@ -45,10 +45,10 @@ public class WoordenApplicatie extends Application {
     public String countWords(String stringToCount){
         
         String reVal = "";
-        String[] splitWords = stringToCount.split("\n|, |,| ");
+        String[] splitWords = stringToCount.split("\n\n|\n|, |,| ");
         reVal += "Totaal aantal woorden:               "+ splitWords.length;
         reVal += "\n";
-        reVal += "Aantal verschillende woorden:   "+new HashSet<String>(Arrays.asList(splitWords)).size();
+        reVal += "Aantal verschillende woorden:   "+new HashSet<>(Arrays.asList(splitWords)).size();
         return reVal;
     }
     
@@ -58,7 +58,7 @@ public class WoordenApplicatie extends Application {
      * @return 
      */
     public String orderByRevAlphabet(String stringToOrder){
-        String[] splitWords = stringToOrder.split("\n|, |,| ");
+        String[] splitWords = stringToOrder.split("\n\n|\n|, |,| ");
         List<String> sortList = Arrays.asList(splitWords);
         
         Collections.sort(sortList, Collections.reverseOrder());
@@ -66,7 +66,7 @@ public class WoordenApplicatie extends Application {
         String reVal = "";
         
         for (String sortList1 : sortList) {
-            reVal+= "\n" + sortList1;
+            reVal+= sortList1 + "\n";
                     
         }
         
@@ -78,14 +78,14 @@ public class WoordenApplicatie extends Application {
      * @param stringToCount
      * @return 
      */
-    public String frequenceString(String stringToCount){
-        String[] splitWords = stringToCount.split("\n|, |,| ");
+    public String frequencyString(String stringToCount){
+        String[] splitWords = stringToCount.split("\n\n|\n|, |,| ");
         List<String> sortList = Arrays.asList(splitWords);
         
         Map<String, Integer> mp = new HashMap<>();
         for(String item: sortList){
             if (mp.keySet().contains(item)) {
-                mp.put(stringToCount, mp.get(item)+1);
+                mp.put(item, mp.get(item)+1);
             }
             else{
                 mp.put(item, 1);
@@ -95,7 +95,7 @@ public class WoordenApplicatie extends Application {
         String reString = "";
         for (Map.Entry<String, Integer> entrySet : mp.entrySet()) {
             
-            reString += "\n" + entrySet.getKey() +":     "+entrySet.getValue();            
+            reString += entrySet.getKey() + ":\t" + entrySet.getValue() + "\n";            
         }
         
         return reString;
