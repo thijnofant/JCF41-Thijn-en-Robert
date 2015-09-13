@@ -60,6 +60,7 @@ public class WoordenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         taInput.setText(DEFAULT_TEXT);
+        taOutput.setStyle("-fx-font-family: monospace");
     }
     
     @FXML
@@ -82,7 +83,8 @@ public class WoordenController implements Initializable {
 
     @FXML
     private void concordatieAction(ActionEvent event) {
-         throw new UnsupportedOperationException("Not supported yet."); 
+         WoordenApplicatie app = new WoordenApplicatie();
+         taOutput.setText(app.concordanceString(taInput.getText()));
     }
    
 }

@@ -6,7 +6,6 @@
 
 package woordenapplicatie;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -46,9 +45,9 @@ public class WoordenApplicatie extends Application {
         
         String reVal = "";
         String[] splitWords = stringToCount.split("\n\n|\n|, |,| ");
-        reVal += "Totaal aantal woorden:               "+ splitWords.length;
+        reVal += "Totaal aantal woorden:            "+ splitWords.length;
         reVal += "\n";
-        reVal += "Aantal verschillende woorden:   "+new HashSet<>(Arrays.asList(splitWords)).size();
+        reVal += "Aantal verschillende woorden:     "+new HashSet<>(Arrays.asList(splitWords)).size();
         return reVal;
     }
     
@@ -80,10 +79,9 @@ public class WoordenApplicatie extends Application {
      */
     public String frequencyString(String stringToCount){
         String[] splitWords = stringToCount.split("\n\n|\n|, |,| ");
-        List<String> sortList = Arrays.asList(splitWords);
         
         Map<String, Integer> mp = new HashMap<>();
-        for(String item: sortList){
+        for(String item: splitWords){
             if (mp.keySet().contains(item)) {
                 mp.put(item, mp.get(item)+1);
             }
@@ -92,13 +90,67 @@ public class WoordenApplicatie extends Application {
             }
         }
         
+        Map<String, Integer> smp = sortMapByValue(mp);
+        
         String reString = "";
-        for (Map.Entry<String, Integer> entrySet : mp.entrySet()) {
-            
-            reString += entrySet.getKey() + ":\t" + entrySet.getValue() + "\n";            
+        for (Map.Entry<String, Integer> entrySet : smp.entrySet()) {          
+            String key = entrySet.getKey() + ":";
+            String value = Integer.toString(entrySet.getValue());
+            reString += String.format("%-20s%s%n", key, value);           
         }
         
         return reString;
     }
     
+    public String concordanceString(String stringToProcess) {
+        String[] sentences = stringToProcess.split("\n\n|\n");
+        
+        Map<String, String> mp = new HashMap<>();
+        for(int i = 0; i < sentences.length; i++) {
+            String[] splitWords = sentences[i].split(", |,| ");
+            for(String item : splitWords) {
+                if (!mp.keySet().contains(item)) {
+                    mp.put(item, Integer.toString(i+1));
+                }
+                else {
+                    mp.put(item, mp.get(item) + ", " + Integer.toString(i+1));
+                }
+            }
+        }
+        
+        String reString = "";
+        for (Map.Entry<String, String> entrySet : mp.entrySet()) {
+            String key = entrySet.getKey() + ":";
+            String value = "[" + entrySet.getValue() + "]";
+            reString += String.format("%-20s%s%n", key, value);
+        }
+        
+        return reString;
+    }
+    
+    /**
+     * inspiratie: http://www.mkyong.com/java/how-to-sort-a-map-in-java/
+     * @param map
+     * @return 
+     */
+    private Map sortMapByValue(Map map) {
+        //map omzetten naar linkedlist
+        List list = new LinkedList(map.entrySet());
+        
+        //list sorteren met comparator
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+           @Override
+           public int compare(Map.Entry<String, Integer> val1, Map.Entry<String, Integer> val2) {
+               return val1.getValue().compareTo(val2.getValue());
+           }
+        });
+        
+        //gesorteerde lijst terug omzetten naar hashmap
+        HashMap<String, Integer> sortedHashMap = new LinkedHashMap<>();
+        for(Iterator<Map.Entry<String, Integer>> it = list.iterator(); it.hasNext();) {
+            Map.Entry<String, Integer> entry = it.next();
+            sortedHashMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedHashMap;
+    }
 }
