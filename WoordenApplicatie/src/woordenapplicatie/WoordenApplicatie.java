@@ -96,7 +96,7 @@ public class WoordenApplicatie extends Application {
         for (Map.Entry<String, Integer> entrySet : smp.entrySet()) {          
             String key = entrySet.getKey() + ":";
             String value = Integer.toString(entrySet.getValue());
-            reString += String.format("%-20s%s%n", key, value);           
+            reString += String.format("%-20s%s" + "\n", key, value);           
         }
         
         return reString;
@@ -122,7 +122,7 @@ public class WoordenApplicatie extends Application {
         for (Map.Entry<String, String> entrySet : mp.entrySet()) {
             String key = entrySet.getKey() + ":";
             String value = "[" + entrySet.getValue() + "]";
-            reString += String.format("%-20s%s%n", key, value);
+            reString += String.format("%-20s%s"+"\n", key, value);
         }
         
         return reString;
