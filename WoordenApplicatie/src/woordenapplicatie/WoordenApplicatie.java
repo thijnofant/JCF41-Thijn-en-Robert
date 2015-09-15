@@ -105,7 +105,7 @@ public class WoordenApplicatie extends Application {
     public String concordanceString(String stringToProcess) {
         String[] sentences = stringToProcess.split("\n\n|\n");
         
-        Map<String, String> mp = new HashMap<>();
+        Map<String, String> mp = new TreeMap<>();
         for(int i = 0; i < sentences.length; i++) {
             String[] splitWords = sentences[i].split(", |,| ");
             for(String item : splitWords) {
