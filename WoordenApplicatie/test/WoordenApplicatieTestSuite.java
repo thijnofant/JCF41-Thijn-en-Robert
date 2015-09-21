@@ -160,7 +160,7 @@ public class WoordenApplicatieTestSuite {
                 "Een, twee, drie, vier\n" +
                 "Hoedje van, hoedje van\n" +
                 "Een, twee, drie, vier\n" +
-                "Hoedje van papier";
+                "Hoedje van papier\n";
         
         expected = "van:                [2, 2, 4, 6, 6, 8]\nhoedje:             [2, 6]\ntwee:               [1, 3, 5, 7]\ndrie:               [1, 3, 5, 7]\n"+
                 "vier:               [1, 3, 5, 7]\nHoedje:             [2, 4, 6, 8]\npapier:             [4, 8]\nEen:                [1, 3, 5, 7]\n";

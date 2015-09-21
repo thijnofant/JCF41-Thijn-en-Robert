@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Thijn" name="WoordenApplicatieTestSuite" skipped="0" tests="4" time="0.065" timestamp="2015-09-15T09:59:29">
+<testsuite errors="0" failures="1" hostname="Thijn" name="WoordenApplicatieTestSuite" skipped="0" tests="4" time="0.066" timestamp="2015-09-15T12:04:21">
   <properties>
     <property name="netbeans.autoupdate.country" value="US" />
     <property name="javafx.binarycss" value="false" />
@@ -45,7 +45,7 @@
     <property name="user.name" value="Thijn" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner WoordenApplicatieTestSuite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\GitHub\JCF41-Thijn-en-Robert\WoordenApplicatie\build\test\results\TEST-WoordenApplicatieTestSuite.xml crashfile=D:\GitHub\JCF41-Thijn-en-Robert\WoordenApplicatie\build\junitvmwatcher6927753864285612763.properties propsfile=D:\GitHub\JCF41-Thijn-en-Robert\WoordenApplicatie\build\junit2325708633350516600.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner WoordenApplicatieTestSuite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\GitHub\JCF41-Thijn-en-Robert\WoordenApplicatie\build\test\results\TEST-WoordenApplicatieTestSuite.xml crashfile=D:\GitHub\JCF41-Thijn-en-Robert\WoordenApplicatie\build\junitvmwatcher6426664390608501295.properties propsfile=D:\GitHub\JCF41-Thijn-en-Robert\WoordenApplicatie\build\junit330565236821330998.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -79,7 +79,7 @@
     <property name="javac.debug" value="true" />
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="\" />
-    <property name="javac.includesfile.binary" value="D:\GitHub\JCF41-Thijn-en-Robert\WoordenApplicatie\null949603453" />
+    <property name="javac.includesfile.binary" value="D:\GitHub\JCF41-Thijn-en-Robert\WoordenApplicatie\null1177458075" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="javac.test.processorpath" value="D:\Program Files\Java\jdk1.8.0_31\jre/lib/javaws.jar:D:\Program Files\Java\jdk1.8.0_31\jre/lib/deploy.jar:D:\Program Files\Java\jdk1.8.0_31\jre/lib/plugin.jar:build/classes:D:\Program Files\NetBeans 8.0.2\platform\modules\ext\junit-4.10.jar" />
     <property name="netbeans.buildnumber" value="201411181905" />
@@ -344,7 +344,25 @@
   </properties>
   <testcase classname="WoordenApplicatieTestSuite" name="testCountWords" time="0.006" />
   <testcase classname="WoordenApplicatieTestSuite" name="testFrequency" time="0.002" />
-  <testcase classname="WoordenApplicatieTestSuite" name="testConcordance" time="0.001" />
+  <testcase classname="WoordenApplicatieTestSuite" name="testConcordance" time="0.006">
+    <failure message="Concordantie van woorden1 is niet goed expected:&lt;[van:                [2, 2, 4]&#xa;hoedje:             [2]&#xa;twee:               [1, 3]&#xa;drie:               [1, 3]&#xa;vier:               [1, 3]&#xa;Hoedje:             [2, 4]&#xa;papier:             [4]&#xa;Een: ]               [1, 3...&gt; but was:&lt;[Een:                [1, 3]&#xa;Hoedje:             [2, 4]&#xa;drie:               [1, 3]&#xa;hoedje:             [2]&#xa;papier:             [4]&#xa;twee:               [1, 3]&#xa;van:                [2, 2, 4]&#xa;vier:]               [1, 3...&gt;" type="junit.framework.ComparisonFailure">junit.framework.ComparisonFailure: Concordantie van woorden1 is niet goed expected:&lt;[van:                [2, 2, 4]
+hoedje:             [2]
+twee:               [1, 3]
+drie:               [1, 3]
+vier:               [1, 3]
+Hoedje:             [2, 4]
+papier:             [4]
+Een: ]               [1, 3...&gt; but was:&lt;[Een:                [1, 3]
+Hoedje:             [2, 4]
+drie:               [1, 3]
+hoedje:             [2]
+papier:             [4]
+twee:               [1, 3]
+van:                [2, 2, 4]
+vier:]               [1, 3...&gt;
+	at WoordenApplicatieTestSuite.testConcordance(WoordenApplicatieTestSuite.java:153)
+</failure>
+  </testcase>
   <testcase classname="WoordenApplicatieTestSuite" name="testOrderRevAlphabet" time="0.001" />
   <system-out><![CDATA[hoedje:             1
 papier:             1
@@ -373,14 +391,14 @@ Hoedje:             [2, 4]
 papier:             [4]
 Een:                [1, 3]
 
-van:                [2, 2, 4]
-hoedje:             [2]
-twee:               [1, 3]
-drie:               [1, 3]
-vier:               [1, 3]
-Hoedje:             [2, 4]
-papier:             [4]
 Een:                [1, 3]
+Hoedje:             [2, 4]
+drie:               [1, 3]
+hoedje:             [2]
+papier:             [4]
+twee:               [1, 3]
+van:                [2, 2, 4]
+vier:               [1, 3]
 
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
