@@ -5,6 +5,9 @@
  */
 package huffmancodering;
 
+import java.util.GregorianCalendar;
+import javax.print.attribute.standard.DateTimeAtCompleted;
+
 /**
  *
  * @author Thijn
