@@ -23,10 +23,10 @@ public class HuffmanCodering {
     }
     
     public void initialiseer() {
-        ArrayList<CharCount> karakterFreq = tekenFrequentie(karakters);
-        Collections.sort(karakterFreq);
+        ArrayList<CharCount> karakterFreq = tekenFrequentie(karakters); //N
+        Collections.sort(karakterFreq, Collections.reverseOrder()); //N*Log(N)
         
-        for (CharCount c : karakterFreq) {
+        for (CharCount c : karakterFreq) { //N
             System.out.println(c.karakter + ": " + c.aantal);
         }
     }
