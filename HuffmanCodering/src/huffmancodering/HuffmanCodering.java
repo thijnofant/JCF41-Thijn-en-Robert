@@ -5,20 +5,56 @@
  */
 package huffmancodering;
 
-import java.util.GregorianCalendar;
-import javax.print.attribute.standard.DateTimeAtCompleted;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
  * @author Thijn
  */
-public class HuffmanCodering {
-
-    /**
-     * @param args the command line arguments
-     */
+public class HuffmanCodering { 
+    
+    String invoer = "bananen";
+    char[] karakters = invoer.toCharArray();
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        HuffmanCodering instantie = new HuffmanCodering();
+        instantie.initialiseer();
     }
     
+    public void initialiseer() {
+        ArrayList<CharCount> karakterFreq = tekenFrequentie(karakters);
+        Collections.sort(karakterFreq);
+        
+        for (CharCount c : karakterFreq) {
+            System.out.println(c.karakter + ": " + c.aantal);
+        }
+    }
+    
+    public ArrayList<CharCount> tekenFrequentie (char[] chars) {
+        ArrayList<CharCount> frequenties = new ArrayList<>();
+        
+        for (char c : chars) {
+            boolean toevoegen = false;
+            
+            if (frequenties.isEmpty())
+                    toevoegen = true;
+            
+            for (CharCount count : frequenties) {
+                if (count.karakter  == c) {
+                    count.aantal += 1;
+                    toevoegen = false;
+                    break;
+                }
+                else {
+                    toevoegen = true;
+                }
+            }
+            
+            if (toevoegen) 
+                frequenties.add(new CharCount(c));
+        }
+        
+        return frequenties;
+    }
 }
