@@ -14,7 +14,7 @@ import java.util.PriorityQueue;
  */
 public class HuffmanCodering { 
     
-    String invoer = "bananen";
+    String invoer = "hallo ik ben dom";
     char[] karakters = invoer.toCharArray();
     
     public static void main(String[] args) {
@@ -26,10 +26,11 @@ public class HuffmanCodering {
         PriorityQueue<Knoop> knopen = new PriorityQueue(tekenFrequentie(karakters)); //N
         Knoop root = genereerHuffman(knopen);
         root.gaNaarBeneden("");
+        String bitcode = "";
         for (int i = 0; i < karakters.length; i++) {
-            System.out.print(root.bitCode(karakters[i]));
+            bitcode += root.bitCode(karakters[i]);
         }
-        System.out.println(root.decode("0010010010010010010010010110110001"));
+        System.out.println(root.decode(bitcode));
     }
     
     public Knoop genereerHuffman(PriorityQueue knopen) {

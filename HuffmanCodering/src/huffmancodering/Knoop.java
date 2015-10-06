@@ -89,15 +89,10 @@ public class Knoop implements Comparable<Knoop> {
         return result;
     }
     
-    public char searchForChar(String bitcode,int searchpos){
-        
-        System.out.println("looking for: " + bitcode);
-        System.out.println("This is: " + this.bitcode);
-        
+    public char searchForChar(String bitcode,int searchpos){        
         
         if(this.bitcode.equals(bitcode))
         {
-            System.out.println("gevind");
             return this.karakter;
         }
         else
@@ -105,8 +100,6 @@ public class Knoop implements Comparable<Knoop> {
             int search = searchpos+1;
             
             String temp = bitcode.substring(searchpos, searchpos+1);
-            System.out.println("looking at bit: " + searchpos);
-            System.out.println("left or right: " + temp);
 
             switch (temp) {
                 case "0":
