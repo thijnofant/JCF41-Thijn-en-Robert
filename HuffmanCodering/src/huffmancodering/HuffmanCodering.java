@@ -6,7 +6,7 @@
 package huffmancodering;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.PriorityQueue;
 
 /**
  *
@@ -23,16 +23,28 @@ public class HuffmanCodering {
     }
     
     public void initialiseer() {
-        ArrayList<CharCount> karakterFreq = tekenFrequentie(karakters); //N
-        Collections.sort(karakterFreq, Collections.reverseOrder()); //N*Log(N)
-        
-        for (CharCount c : karakterFreq) { //N
-            System.out.println(c.karakter + ": " + c.aantal);
+        PriorityQueue<Knoop> knopen = new PriorityQueue(tekenFrequentie(karakters)); //N
+        Knoop root = genereerHuffman(knopen);
+        root.gaNaarBeneden("");
+        for (int i = 0; i < karakters.length; i++) {
+            System.out.print(root.bitCode(karakters[i]));
         }
+        System.out.println(root.decode("0010010010010010010010010110110001"));
     }
     
-    public ArrayList<CharCount> tekenFrequentie (char[] chars) {
-        ArrayList<CharCount> frequenties = new ArrayList<>();
+    public Knoop genereerHuffman(PriorityQueue knopen) {
+        while (knopen.size() > 1) {
+            Knoop rechts = (Knoop)knopen.poll();
+            Knoop links = (Knoop)knopen.poll();
+            Knoop nieuweKnoop = new Knoop(links,rechts);
+            knopen.add(nieuweKnoop);
+        }
+        
+        return (Knoop)knopen.poll();
+    }
+    
+    public ArrayList<Knoop> tekenFrequentie (char[] chars) {
+        ArrayList<Knoop> frequenties = new ArrayList<>();
         
         for (char c : chars) {
             boolean toevoegen = false;
@@ -40,7 +52,7 @@ public class HuffmanCodering {
             if (frequenties.isEmpty())
                     toevoegen = true;
             
-            for (CharCount count : frequenties) {
+            for (Knoop count : frequenties) {
                 if (count.karakter  == c) {
                     count.aantal += 1;
                     toevoegen = false;
@@ -52,7 +64,7 @@ public class HuffmanCodering {
             }
             
             if (toevoegen) 
-                frequenties.add(new CharCount(c));
+                frequenties.add(new Knoop(c));
         }
         
         return frequenties;
