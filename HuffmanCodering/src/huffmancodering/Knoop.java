@@ -30,7 +30,12 @@ public class Knoop implements Comparable<Knoop> {
     
     @Override
     public int compareTo(Knoop c) {
-        if (this.aantal > c.aantal) 
+        
+        if(this.karakter == c.karakter && this.aantal == c.aantal)
+        {
+            return 0;
+        }
+        else if (this.aantal > c.aantal) 
             return 1;
         else if (this.aantal < c.aantal) 
             return -1;
@@ -73,12 +78,12 @@ public class Knoop implements Comparable<Knoop> {
         String result = "";
         
         String tempString = "";
-        while (newbitcode.length() > 0) {
+        while (newbitcode.length() > 0) { //N
             tempString += newbitcode.substring(0,1);
             
             newbitcode = newbitcode.substring(1);
             
-            char returned = searchForChar(tempString,0);
+            char returned = searchForChar(tempString,0); //Log(N)
             
             if(returned != 0){
                 result+= returned;

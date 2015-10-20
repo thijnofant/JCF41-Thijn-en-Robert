@@ -29,7 +29,7 @@ public class HuffmanCodering {
         for (int i = 0; i < karakters.length; i++) {
             System.out.print(root.bitCode(karakters[i]));
         }
-        System.out.println(root.decode("0010010010010010010010010110110001"));
+        System.out.println(root.decode("0010110110001"));
     }
     
     public Knoop genereerHuffman(PriorityQueue knopen) {

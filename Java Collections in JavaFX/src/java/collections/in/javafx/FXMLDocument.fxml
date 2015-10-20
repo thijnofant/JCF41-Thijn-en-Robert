@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="493.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="java.collections.in.javafx.FXMLDocumentController">
+   <children>
+      <TreeView id="tvAfdelingen" fx:id="tvAfdelingen" prefHeight="490.0" prefWidth="200.0" />
+      <TableView fx:id="tvMedewerkers" layoutX="200.0" prefHeight="314.0" prefWidth="301.0">
+        <columns>
+          <TableColumn id="columnID" fx:id="columnID" prefWidth="75.0" text="ID" />
+          <TableColumn id="columnName" fx:id="columnName" prefWidth="75.0" text="Naam" />
+            <TableColumn id="columnWage" fx:id="columnWage" prefWidth="75.0" text="Loon" />
+            <TableColumn id="columnMail" fx:id="columnMail" prefWidth="75.0" text="Email" />
+        </columns>
+      </TableView>
+      <Button id="btnAddAfdeling" fx:id="btnAddAfdeling" layoutX="210.0" layoutY="323.0" mnemonicParsing="false" text="AddAfdeling" />
+      <Button id="btnEditAfdeling" fx:id="btnEditAfdeling" layoutX="211.0" layoutY="355.0" mnemonicParsing="false" text="EditAfdeling" />
+      <Button id="btnAddMedewerker" fx:id="btnAddMedewerker" layoutX="344.0" layoutY="323.0" mnemonicParsing="false" text="AddMedewerker" />
+      <Button id="btnEditMedewerker" fx:id="btnEditMedewerker" layoutX="345.0" layoutY="355.0" mnemonicParsing="false" text="EditMedewerker" />
+   </children>
+</AnchorPane>
