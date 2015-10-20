@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="493.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="java.collections.in.javafx.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="493.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="applicatiepackage.FXMLDocumentController">
    <children>
       <TreeView id="tvAfdelingen" fx:id="tvAfdelingen" prefHeight="490.0" prefWidth="200.0" />
       <TableView fx:id="tvMedewerkers" layoutX="200.0" prefHeight="314.0" prefWidth="301.0">
