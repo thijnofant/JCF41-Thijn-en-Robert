@@ -14,11 +14,13 @@ public class Medewerker {
     private String naam;
     private double loon;
     private String email;
+    private Afdeling afdeling;
     
-    public Medewerker(String naam, double loon, String email) {
+    public Medewerker(String naam, double loon, String email, Afdeling afdeling) {
         this.naam = naam;
         this.loon = loon;
         this.email = email;
+        this.afdeling = afdeling;
     }
     
     public void pasMedewerkerAan(String naam, double loon, String email) {
