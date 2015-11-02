@@ -13,8 +13,8 @@
         <columns>
           <TableColumn id="columnID" fx:id="columnID" prefWidth="75.0" text="ID" />
           <TableColumn id="columnName" fx:id="columnName" prefWidth="75.0" text="Naam" />
-            <TableColumn id="columnWage" fx:id="columnWage" prefWidth="75.0" text="Loon" />
-            <TableColumn id="columnMail" fx:id="columnMail" prefWidth="75.0" text="Email" />
+          <TableColumn id="columnWage" fx:id="columnWage" prefWidth="75.0" text="Loon" />
+          <TableColumn id="columnMail" fx:id="columnMail" prefWidth="75.0" text="Email" />
         </columns>
       </TableView>
       <Button id="btnAddAfdeling" fx:id="btnAddAfdeling" layoutX="210.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleAddAfdeling" text="AddAfdeling" />

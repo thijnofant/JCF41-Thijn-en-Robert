@@ -12,6 +12,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
@@ -22,7 +24,17 @@ import javafx.scene.control.TreeView;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    public TreeView tvAfdelingen;
+    public TreeView tvAfdelingen;  
+    @FXML
+    private TableView tvMedewerkers;
+    @FXML
+    private TableColumn<Medewerker, Integer> columnID; 
+    @FXML
+    private TableColumn<Medewerker, String> columnName;
+    @FXML
+    private TableColumn<Medewerker, Double> columnWage;
+    @FXML
+    private TableColumn<Medewerker, String> columnMail;
     
     private TreeItem<Afdeling> selectedItem;
     
@@ -36,8 +48,9 @@ public class FXMLDocumentController implements Initializable {
 
         controller = new Controller(tvAfdelingen);
         tvAfdelingen.setEditable(true);
-        tvAfdelingen.getSelectionModel().selectedItemProperty().addListener((ObservableValue observable, Object oldValue, Object newValue) -> {
-            selectedItem = (TreeItem) newValue;
+        tvAfdelingen.getSelectionModel().selectedItemProperty().addListener((
+                ObservableValue observable, Object oldValue, Object newValue) -> {
+                selectedItem = (TreeItem) newValue;
         });
     } 
     
@@ -56,11 +69,7 @@ public class FXMLDocumentController implements Initializable {
         }
         else{
             this.controller.addAfdeling("Nieuwe Afdeling", "");
-        }
-        
-        
-        
-        
+        }    
     }
     
     @FXML
