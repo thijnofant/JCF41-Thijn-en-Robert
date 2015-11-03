@@ -39,7 +39,7 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Medewerker, String> columnMail;
     
     private TreeItem<Afdeling> selectedItem;
-    private ObservableList<Medewerker> medewerkers;
+    private ObservableList<Medewerker> medewerkers; // TODO Gebruik een SET in plaats van een AL
     private ObservableList<Afdeling> afdelingen;
     private Afdeling rootAfdeling;
     private int medewerkerCount = 0;
@@ -60,7 +60,7 @@ public class FXMLDocumentController implements Initializable {
         afdelingen.addListener(new ListChangeListener(){
             @Override
             public void onChanged(ListChangeListener.Change change){
-                refreshTree();
+                refreshTree(); // TODO kan dit ook anders?
             }
         });
         
@@ -121,9 +121,9 @@ public class FXMLDocumentController implements Initializable {
     
     private void refreshTable() {
         ObservableList<Medewerker> selectedGroup = FXCollections.observableArrayList();
-        for (Medewerker m : medewerkers) { 
+        for (Medewerker m : medewerkers) { // TODO gebruik contains methode.
             if (selectedItem != null) {
-                if (m.getAfdeling().equals(selectedItem.getValue())) {
+                if (m.getAfdeling().equals(selectedItem.getValue())) { // TODO werkt nog niet. 
                     selectedGroup.add(m);
                 }
             }

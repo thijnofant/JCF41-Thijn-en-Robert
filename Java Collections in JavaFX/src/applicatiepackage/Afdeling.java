@@ -59,7 +59,7 @@ class Afdeling implements Comparable<Afdeling> {
         }
         else
         {
-            return -1;
+            return -1; // TODO Kiekens!
         }
     }
 }
