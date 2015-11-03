@@ -15,15 +15,27 @@ import javafx.scene.control.TreeItem;
  */
 class Afdeling implements Comparable<Afdeling> {
     private String naam;
+    private int id;
+    public static int LastID = 0;
     private List<Afdeling> afdelingen;
     
     public Afdeling(String naam) {
         this.naam = naam;
         afdelingen = new ArrayList<>();
+        this.id = Afdeling.LastID+1;
+        Afdeling.LastID = this.id;
+    }
+
+    public int getId() {
+        return id;
     }
     
     public String getNaam(){
         return this.naam;
+    }
+    
+    public List<Afdeling> getAfdelingen() {
+        return afdelingen;
     }
     
     public void addAfdeling(Afdeling afd){
@@ -71,6 +83,6 @@ class Afdeling implements Comparable<Afdeling> {
     
     @Override
     public boolean equals(Object o){
-        return ( this.naam.equals(((Afdeling)o).naam) && this.afdelingen.equals(((Afdeling)o).afdelingen ));
+        return ( this.naam.equals(((Afdeling)o).naam) && (this.afdelingen.equals(((Afdeling)o).afdelingen) && (this.id == ((Afdeling)o).id )));
     }
 }

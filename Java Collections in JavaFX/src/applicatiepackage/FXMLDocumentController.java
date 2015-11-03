@@ -11,6 +11,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
+import javafx.collections.SetChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -43,7 +45,8 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Medewerker, String> columnMail;
     
     private TreeItem<Afdeling> selectedItem;
-    private ObservableList<Medewerker> medewerkers; // TODO Gebruik een SET in plaats van een AL
+    //private ObservableList<Medewerker> medewerkers; // TODO Gebruik een SET in plaats van een AL
+    private ObservableSet<Medewerker> medewerkers;
     private ObservableList<Afdeling> afdelingen; // TODO Gebruik een SET in plaats van een AL
     private Afdeling rootAfdeling;
     private int medewerkerCount = 0;
@@ -58,7 +61,8 @@ public class FXMLDocumentController implements Initializable {
                 refreshTable(); // TODO kan dit ook anders?
         });
         
-        medewerkers = FXCollections.observableArrayList();
+        //medewerkers = FXCollections.observableArrayList();
+        medewerkers = FXCollections.observableSet();
         afdelingen = FXCollections.observableArrayList();
         populateData();
         
@@ -69,9 +73,16 @@ public class FXMLDocumentController implements Initializable {
             }
         });
         
-        medewerkers.addListener(new ListChangeListener(){
+        /*medewerkers.addListener(new ListChangeListener(){
             @Override
             public void onChanged(ListChangeListener.Change change){
+                refreshTable();
+            }
+        });*/
+        
+        medewerkers.addListener(new SetChangeListener(){
+            @Override
+            public void onChanged(SetChangeListener.Change change) {
                 refreshTable();
             }
         });
@@ -167,19 +178,23 @@ public class FXMLDocumentController implements Initializable {
     
     private void refreshTable() {
         ObservableList<Medewerker> selectedGroup = FXCollections.observableArrayList();
-        for (Medewerker m : medewerkers) { // TODO gebruik contains methode.
-            if (selectedItem != null) {
+        if (selectedItem != null) {
+            for (Medewerker m : medewerkers) { 
+                // TODO gebruik contains methode.
                 if (m.getAfdeling().equals(selectedItem.getValue())) {
                     selectedGroup.add(m);
                 }
             }
-            
         }
         tvMedewerkers.setItems(selectedGroup);
     }
     
     public Afdeling addAfdeling(String naam, Afdeling parent){
         Afdeling afd = new Afdeling(naam);
+        if (afdelingen.contains(afd)) {
+            return null;
+        }
+        
         for (Afdeling afdelingen1 : afdelingen) {
             if (afdelingen1.equals(parent)) {
                 afdelingen1.addAfdeling(afd);
@@ -190,11 +205,17 @@ public class FXMLDocumentController implements Initializable {
         if (!(parent != null)) {
             this.rootAfdeling = afd;
         }
+        
         return afd;
     }
     
     public void addMedewerker(String naam, int loon, String mail, Afdeling afdeling) {
         Medewerker med = new Medewerker(getMedewerkerId(), naam, loon, mail);
+
+        if (this.medewerkers.contains(med)) {
+            return;
+        }
+        
         for (Afdeling afd : afdelingen) {
             if (afd.equals(afdeling)) {
                 med.setAfdeling(afd);
