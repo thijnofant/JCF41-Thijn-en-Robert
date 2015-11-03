@@ -13,7 +13,7 @@ import javafx.scene.control.TreeItem;
  *
  * @author robert
  */
-class Afdeling {
+class Afdeling implements Comparable<Afdeling> {
     private String naam;
     private List<Afdeling> afdelingen;
     
@@ -33,7 +33,7 @@ class Afdeling {
     public TreeItem getTreeItems(){
         TreeItem<Afdeling> rootItem = new TreeItem<> (this);
         rootItem.setExpanded(true);
-        for (int i = 1; i < afdelingen.size(); i++) {
+        for (int i = 0; i < afdelingen.size(); i++) {
             TreeItem<Afdeling> item = afdelingen.get(i).getTreeItems();
             rootItem.getChildren().add(item);
         }
@@ -43,5 +43,23 @@ class Afdeling {
     @Override 
     public String toString() {
         return this.naam;
+    }
+    
+    public void deleteThis(){
+        for(Afdeling a : this.afdelingen){
+            a.deleteThis();
+        }
+        this.afdelingen = new ArrayList<>();
+    }
+
+    @Override
+    public int compareTo(Afdeling o) {
+        if (this.naam.equals(o.naam) && this.afdelingen.equals(o.afdelingen) ) {
+            return 0;
+        }
+        else
+        {
+            return -1;
+        }
     }
 }
