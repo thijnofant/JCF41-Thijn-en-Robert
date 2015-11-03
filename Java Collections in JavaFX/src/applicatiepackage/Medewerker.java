@@ -9,10 +9,10 @@ package applicatiepackage;
  *
  * @author robert
  */
-public class Medewerker {
+public class Medewerker implements Comparable<Medewerker> {
     private int id;
     private String naam;
-    private double loon;
+    private double loon; // TODO welk type moeten deze velden zijn zodat je ze inline in de table kunt aanpassen? 
     private String email;
     private Afdeling afdeling;
     
@@ -51,4 +51,27 @@ public class Medewerker {
     public void setAfdeling(Afdeling afdeling) {
         this.afdeling = afdeling;
     }
+    
+    @Override
+    public int compareTo(Medewerker o) {
+        if ( this.equals(o) ) {
+            return 0;
+        }
+        else
+        {
+            int i = this.naam.compareTo(o.getNaam());
+            if (i != 0) {
+                return i;
+            }
+            else{
+                return -1;
+            }
+        }
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        Medewerker m = (Medewerker) o;
+        return ( this.id == m.id && this.naam.equals(m.naam) &&  this.email.equals(m.email) && this.afdeling.equals(m.afdeling) );
+    }    
 }

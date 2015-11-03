@@ -59,7 +59,18 @@ class Afdeling implements Comparable<Afdeling> {
         }
         else
         {
-            return -1; // TODO Kiekens!
+            int i = this.naam.compareTo(o.getNaam());
+            if (i != 0) {
+                return i;
+            }
+            else{
+                return -1;
+            }
         }
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        return ( this.naam.equals(((Afdeling)o).naam) && this.afdelingen.equals(((Afdeling)o).afdelingen ));
     }
 }
