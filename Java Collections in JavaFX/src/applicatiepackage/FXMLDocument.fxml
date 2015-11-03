@@ -6,10 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="493.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="applicatiepackage.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="applicatiepackage.FXMLDocumentController">
    <children>
       <TreeView id="tvAfdelingen" fx:id="tvAfdelingen" prefHeight="490.0" prefWidth="200.0" />
-      <TableView fx:id="tvMedewerkers" layoutX="200.0" prefHeight="314.0" prefWidth="301.0">
+      <TableView fx:id="tvMedewerkers" layoutX="200.0" prefHeight="314.0" prefWidth="601.0">
         <columns>
           <TableColumn id="columnID" fx:id="columnID" prefWidth="75.0" text="ID" />
           <TableColumn id="columnName" fx:id="columnName" prefWidth="75.0" text="Naam" />

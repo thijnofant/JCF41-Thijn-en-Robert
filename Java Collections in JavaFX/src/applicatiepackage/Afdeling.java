@@ -40,7 +40,8 @@ class Afdeling {
         return rootItem;
     }
     
-    
-    
-
+    @Override 
+    public String toString() {
+        return this.naam;
+    }
 }
