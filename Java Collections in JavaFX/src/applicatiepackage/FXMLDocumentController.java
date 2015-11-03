@@ -12,10 +12,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,7 +41,7 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Medewerker, String> columnMail;
     
     private TreeItem<Afdeling> selectedItem;
-    private ObservableList<Medewerker> medewerkers; // TODO Gebruik een SET in plaats van een AL
+    private ObservableList<Medewerker> medewerkers;
     private ObservableList<Afdeling> afdelingen;
     private Afdeling rootAfdeling;
     private int medewerkerCount = 0;
@@ -60,7 +62,7 @@ public class FXMLDocumentController implements Initializable {
         afdelingen.addListener(new ListChangeListener(){
             @Override
             public void onChanged(ListChangeListener.Change change){
-                refreshTree(); // TODO kan dit ook anders?
+                refreshTree();
             }
         });
         
@@ -72,9 +74,45 @@ public class FXMLDocumentController implements Initializable {
         });
         
         columnID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnID.setOnEditCommit(
+            new EventHandler<CellEditEvent<Medewerker, Integer>>() {
+                @Override
+                public void handle(CellEditEvent<Medewerker, Integer> t) {
+                    ((Medewerker) t.getTableView().getItems().get(t.getTablePosition().getRow())
+                    ).setId(t.getNewValue());
+                }
+            }
+        );
         columnName.setCellValueFactory(new PropertyValueFactory<>("naam"));
+        columnName.setOnEditCommit(
+            new EventHandler<CellEditEvent<Medewerker, String>>() {
+                @Override
+                public void handle(CellEditEvent<Medewerker, String> t) {
+                    ((Medewerker) t.getTableView().getItems().get(t.getTablePosition().getRow())
+                    ).setNaam(t.getNewValue());
+                }
+            }
+        );
         columnWage.setCellValueFactory(new PropertyValueFactory<>("loon"));
+        columnWage.setOnEditCommit(
+            new EventHandler<CellEditEvent<Medewerker, Double>>() {
+                @Override
+                public void handle(CellEditEvent<Medewerker, Double> t) {
+                    ((Medewerker) t.getTableView().getItems().get(t.getTablePosition().getRow())
+                    ).setLoon(t.getNewValue());
+                }
+            }
+        );
         columnMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
+        columnMail.setOnEditCommit(
+            new EventHandler<CellEditEvent<Medewerker, String>>() {
+                @Override
+                public void handle(CellEditEvent<Medewerker, String> t) {
+                    ((Medewerker) t.getTableView().getItems().get(t.getTablePosition().getRow())
+                    ).setMail(t.getNewValue());
+                }
+            }
+        );
         
         refreshTree();
     } 
@@ -121,9 +159,9 @@ public class FXMLDocumentController implements Initializable {
     
     private void refreshTable() {
         ObservableList<Medewerker> selectedGroup = FXCollections.observableArrayList();
-        for (Medewerker m : medewerkers) { // TODO gebruik contains methode.
+        for (Medewerker m : medewerkers) { 
             if (selectedItem != null) {
-                if (m.getAfdeling().equals(selectedItem.getValue())) { // TODO werkt nog niet. 
+                if (m.getAfdeling().equals(selectedItem.getValue())) {
                     selectedGroup.add(m);
                 }
             }
