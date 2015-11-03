@@ -47,7 +47,8 @@ public class FXMLDocumentController implements Initializable {
     private TreeItem<Afdeling> selectedItem;
     //private ObservableList<Medewerker> medewerkers; // TODO Gebruik een SET in plaats van een AL
     private ObservableSet<Medewerker> medewerkers;
-    private ObservableList<Afdeling> afdelingen; // TODO Gebruik een SET in plaats van een AL
+    //private ObservableList<Afdeling> afdelingen; // TODO Gebruik een SET in plaats van een AL
+    private ObservableSet<Afdeling> afdelingen;
     private Afdeling rootAfdeling;
     private int medewerkerCount = 0;
         
@@ -63,22 +64,16 @@ public class FXMLDocumentController implements Initializable {
         
         //medewerkers = FXCollections.observableArrayList();
         medewerkers = FXCollections.observableSet();
-        afdelingen = FXCollections.observableArrayList();
+        //afdelingen = FXCollections.observableArrayList();
+        afdelingen = FXCollections.observableSet();
         populateData();
         
-        afdelingen.addListener(new ListChangeListener(){
+        afdelingen.addListener(new SetChangeListener(){
             @Override
-            public void onChanged(ListChangeListener.Change change){
+            public void onChanged(SetChangeListener.Change change){
                 refreshTree(); // TODO kan dit ook anders?
             }
         });
-        
-        /*medewerkers.addListener(new ListChangeListener(){
-            @Override
-            public void onChanged(ListChangeListener.Change change){
-                refreshTable();
-            }
-        });*/
         
         medewerkers.addListener(new SetChangeListener(){
             @Override
