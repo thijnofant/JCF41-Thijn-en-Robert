@@ -5,43 +5,58 @@
  */
 package applicatiepackage;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author robert
  */
 public class Medewerker implements Comparable<Medewerker> {
-    private int id;
-    private String naam;
-    private double loon; // TODO welk type moeten deze velden zijn zodat je ze inline in de table kunt aanpassen? 
-    private String email;
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty naam;
+    private SimpleIntegerProperty loon; // TODO welk type moeten deze velden zijn zodat je ze inline in de table kunt aanpassen? 
+    private SimpleStringProperty email;
     private Afdeling afdeling;
     
-    public Medewerker(int id, String naam, double loon, String email) {
-        this.naam = naam;
-        this.loon = loon;
-        this.email = email;
-    }
-    
-    public void pasMedewerkerAan(String naam, double loon, String email) {
-        this.naam = naam;
-        this.loon = loon;
-        this.email = email;
+    public Medewerker(int id, String naam, int loon, String email) {
+        this.id = new SimpleIntegerProperty(id);
+        this.naam = new SimpleStringProperty(naam);
+        this.loon = new SimpleIntegerProperty(loon);
+        this.email = new SimpleStringProperty(email);
     }
     
     public int getId() {
-        return this.id;
+        return this.id.get();
+    }
+    
+    public void setId(int id) {
+        this.id.set(id);
     }
     
     public String getNaam() {
-        return this.naam;
+        return this.naam.get();
     }
     
-    public double getLoon() {
-        return this.loon;
+    public void setNaam(String naam) {
+        this.naam.set(naam);
+    }
+    
+    public int getLoon() {
+        return this.loon.get();
+    }
+    
+    public void setLoon(int loon) {
+        this.loon.set(loon);
     }
     
     public String getMail() {
-        return this.email;
+        return this.email.get();
+    }
+    
+    public void setMail(String mail) {
+        this.email.set(mail);
     }
     
     public Afdeling getAfdeling() {
@@ -59,7 +74,7 @@ public class Medewerker implements Comparable<Medewerker> {
         }
         else
         {
-            int i = this.naam.compareTo(o.getNaam());
+            int i = this.naam.get().compareTo(o.getNaam());
             if (i != 0) {
                 return i;
             }

@@ -21,6 +21,8 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
 
 /**
  *
@@ -36,7 +38,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableColumn<Medewerker, String> columnName;
     @FXML
-    private TableColumn<Medewerker, Double> columnWage;
+    private TableColumn<Medewerker, Integer> columnWage;
     @FXML
     private TableColumn<Medewerker, String> columnMail;
     
@@ -48,6 +50,7 @@ public class FXMLDocumentController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        tvMedewerkers.setEditable(true);
         tvAfdelingen.setEditable(true);
         tvAfdelingen.getSelectionModel().selectedItemProperty().addListener((
                 ObservableValue observable, Object oldValue, Object newValue) -> {
@@ -73,17 +76,10 @@ public class FXMLDocumentController implements Initializable {
             }
         });
         
-        columnID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        columnID.setOnEditCommit(
-            new EventHandler<CellEditEvent<Medewerker, Integer>>() {
-                @Override
-                public void handle(CellEditEvent<Medewerker, Integer> t) {
-                    ((Medewerker) t.getTableView().getItems().get(t.getTablePosition().getRow())
-                    ).setId(t.getNewValue());
-                }
-            }
-        );
-        columnName.setCellValueFactory(new PropertyValueFactory<>("naam"));
+        columnID.setCellValueFactory(new PropertyValueFactory("id"));
+        
+        columnName.setCellValueFactory(new PropertyValueFactory("naam"));
+        columnName.setCellFactory(TextFieldTableCell.forTableColumn());
         columnName.setOnEditCommit(
             new EventHandler<CellEditEvent<Medewerker, String>>() {
                 @Override
@@ -93,17 +89,29 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         );
-        columnWage.setCellValueFactory(new PropertyValueFactory<>("loon"));
+        columnWage.setCellValueFactory(new PropertyValueFactory("loon"));
+        columnWage.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>(){
+            @Override
+            public String toString(Integer object) {
+                return object.toString();
+            }
+
+            @Override
+            public Integer fromString(String string) {
+                return Integer.parseInt(string);
+            }
+        }));
         columnWage.setOnEditCommit(
-            new EventHandler<CellEditEvent<Medewerker, Double>>() {
+            new EventHandler<CellEditEvent<Medewerker, Integer>>() {
                 @Override
-                public void handle(CellEditEvent<Medewerker, Double> t) {
+                public void handle(CellEditEvent<Medewerker, Integer> t) {
                     ((Medewerker) t.getTableView().getItems().get(t.getTablePosition().getRow())
                     ).setLoon(t.getNewValue());
                 }
             }
         );
-        columnMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
+        columnMail.setCellValueFactory(new PropertyValueFactory("mail"));
+        columnMail.setCellFactory(TextFieldTableCell.forTableColumn());
         columnMail.setOnEditCommit(
             new EventHandler<CellEditEvent<Medewerker, String>>() {
                 @Override
@@ -185,7 +193,7 @@ public class FXMLDocumentController implements Initializable {
         return afd;
     }
     
-    public void addMedewerker(String naam, double loon, String mail, Afdeling afdeling) {
+    public void addMedewerker(String naam, int loon, String mail, Afdeling afdeling) {
         Medewerker med = new Medewerker(getMedewerkerId(), naam, loon, mail);
         for (Afdeling afd : afdelingen) {
             if (afd.equals(afdeling)) {
