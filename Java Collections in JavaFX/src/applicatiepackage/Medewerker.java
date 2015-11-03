@@ -5,7 +5,6 @@
  */
 package applicatiepackage;
 
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -16,7 +15,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class Medewerker implements Comparable<Medewerker> {
     private SimpleIntegerProperty id;
     private SimpleStringProperty naam;
-    private SimpleIntegerProperty loon; // TODO welk type moeten deze velden zijn zodat je ze inline in de table kunt aanpassen? 
+    private SimpleIntegerProperty loon; // TODO welk type moeten deze velden zijn zodat je ze inline in de table kunt aanpassen? //Deze <-
     private SimpleStringProperty email;
     private Afdeling afdeling;
     

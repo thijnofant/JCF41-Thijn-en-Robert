@@ -43,8 +43,8 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Medewerker, String> columnMail;
     
     private TreeItem<Afdeling> selectedItem;
-    private ObservableList<Medewerker> medewerkers;
-    private ObservableList<Afdeling> afdelingen;
+    private ObservableList<Medewerker> medewerkers; // TODO Gebruik een SET in plaats van een AL
+    private ObservableList<Afdeling> afdelingen; // TODO Gebruik een SET in plaats van een AL
     private Afdeling rootAfdeling;
     private int medewerkerCount = 0;
         
@@ -55,7 +55,7 @@ public class FXMLDocumentController implements Initializable {
         tvAfdelingen.getSelectionModel().selectedItemProperty().addListener((
                 ObservableValue observable, Object oldValue, Object newValue) -> {
                 selectedItem = (TreeItem) newValue;
-                refreshTable();
+                refreshTable(); // TODO kan dit ook anders?
         });
         
         medewerkers = FXCollections.observableArrayList();
@@ -65,7 +65,7 @@ public class FXMLDocumentController implements Initializable {
         afdelingen.addListener(new ListChangeListener(){
             @Override
             public void onChanged(ListChangeListener.Change change){
-                refreshTree();
+                refreshTree(); // TODO kan dit ook anders?
             }
         });
         
@@ -167,7 +167,7 @@ public class FXMLDocumentController implements Initializable {
     
     private void refreshTable() {
         ObservableList<Medewerker> selectedGroup = FXCollections.observableArrayList();
-        for (Medewerker m : medewerkers) { 
+        for (Medewerker m : medewerkers) { // TODO gebruik contains methode.
             if (selectedItem != null) {
                 if (m.getAfdeling().equals(selectedItem.getValue())) {
                     selectedGroup.add(m);
