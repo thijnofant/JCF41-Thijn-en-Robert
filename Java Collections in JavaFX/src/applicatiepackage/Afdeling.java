@@ -7,6 +7,8 @@ package applicatiepackage;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 
 /**
@@ -18,12 +20,21 @@ class Afdeling implements Comparable<Afdeling> {
     private int id;
     public static int LastID = 0;
     private List<Afdeling> afdelingen;
+    private ObservableList<Medewerker> medewerkers;
     
     public Afdeling(String naam) {
         this.naam = naam;
         afdelingen = new ArrayList<>();
+        medewerkers = FXCollections.observableArrayList();
         this.id = Afdeling.LastID+1;
         Afdeling.LastID = this.id;
+    }
+    
+    public Afdeling(int id, String naam, ObservableList<Medewerker> medewerkers, List<Afdeling> afdelingen) {
+        this.id = id;
+        this.naam = naam;
+        this.medewerkers = medewerkers;
+        this.afdelingen = afdelingen;
     }
 
     public int getId() {
@@ -38,8 +49,16 @@ class Afdeling implements Comparable<Afdeling> {
         return afdelingen;
     }
     
+    public ObservableList<Medewerker> getMedewerkers() {
+        return medewerkers;
+    }
+    
     public void addAfdeling(Afdeling afd){
         this.afdelingen.add(afd);
+    }
+    
+    public void addMedewerker(Medewerker med) {
+        this.medewerkers.add(med);
     }
     
     public TreeItem getTreeItems(){

@@ -9,7 +9,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.collections.SetChangeListener;
@@ -20,10 +19,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 
 /**
@@ -45,39 +46,34 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Medewerker, String> columnMail;
     
     private TreeItem<Afdeling> selectedItem;
-    //private ObservableList<Medewerker> medewerkers; // TODO Gebruik een SET in plaats van een AL
-    private ObservableSet<Medewerker> medewerkers;
-    //private ObservableList<Afdeling> afdelingen; // TODO Gebruik een SET in plaats van een AL
     private ObservableSet<Afdeling> afdelingen;
     private Afdeling rootAfdeling;
     private int medewerkerCount = 0;
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        afdelingen = FXCollections.observableSet();
+        
         tvMedewerkers.setEditable(true);
         tvAfdelingen.setEditable(true);
+        
+        tvAfdelingen.setCellFactory(new Callback<TreeView<Afdeling>,TreeCell<Afdeling>>(){
+            @Override
+            public TreeCell<Afdeling> call(TreeView<Afdeling> p) {
+                return new TextFieldTree(p);
+            }
+        });
+        
         tvAfdelingen.getSelectionModel().selectedItemProperty().addListener((
                 ObservableValue observable, Object oldValue, Object newValue) -> {
                 selectedItem = (TreeItem) newValue;
                 refreshTable(); // TODO kan dit ook anders?
         });
-        
-        //medewerkers = FXCollections.observableArrayList();
-        medewerkers = FXCollections.observableSet();
-        //afdelingen = FXCollections.observableArrayList();
-        afdelingen = FXCollections.observableSet();
-        populateData();
-        
-        afdelingen.addListener(new SetChangeListener(){
+           
+        afdelingen.addListener(new SetChangeListener() {
             @Override
             public void onChanged(SetChangeListener.Change change){
                 refreshTree(); // TODO kan dit ook anders?
-            }
-        });
-        
-        medewerkers.addListener(new SetChangeListener(){
-            @Override
-            public void onChanged(SetChangeListener.Change change) {
                 refreshTable();
             }
         });
@@ -95,6 +91,7 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         );
+        
         columnWage.setCellValueFactory(new PropertyValueFactory("loon"));
         columnWage.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>(){
             @Override
@@ -116,6 +113,7 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         );
+        
         columnMail.setCellValueFactory(new PropertyValueFactory("mail"));
         columnMail.setCellFactory(TextFieldTableCell.forTableColumn());
         columnMail.setOnEditCommit(
@@ -128,6 +126,7 @@ public class FXMLDocumentController implements Initializable {
             }
         );
         
+        populateData();
         refreshTree();
     } 
     
@@ -142,12 +141,7 @@ public class FXMLDocumentController implements Initializable {
             addAfdeling("Nieuwe Afdeling", null);
         }    
     }
-    
-    @FXML
-    private void handleEditAfdeling(ActionEvent event) {
-        System.out.println("You clicked me!");
-    }
-    
+
     @FXML
     private void handleAddMedewerker(ActionEvent event) {
         System.out.println("You clicked addmedewerker!");
@@ -155,12 +149,7 @@ public class FXMLDocumentController implements Initializable {
             addMedewerker("NieuweMedewerker", 202020, "new@newmail.nl", selectedItem.getValue());
         }
     }
-    
-    @FXML
-    private void handleEditMedewerker(ActionEvent event) {
-        System.out.println("You clicked me!");
-    }
-    
+
     private void refreshTree() {
         TreeView temp = this.tvAfdelingen;
         
@@ -172,16 +161,12 @@ public class FXMLDocumentController implements Initializable {
     }
     
     private void refreshTable() {
-        ObservableList<Medewerker> selectedGroup = FXCollections.observableArrayList();
+        ObservableList<Medewerker> selectedGroup;
         if (selectedItem != null) {
-            for (Medewerker m : medewerkers) { 
-                // TODO gebruik contains methode.
-                if (m.getAfdeling().equals(selectedItem.getValue())) {
-                    selectedGroup.add(m);
-                }
-            }
+            selectedGroup= selectedItem.getValue().getMedewerkers();
+            tvMedewerkers.setItems(selectedGroup);
         }
-        tvMedewerkers.setItems(selectedGroup);
+        
     }
     
     public Afdeling addAfdeling(String naam, Afdeling parent){
@@ -206,18 +191,7 @@ public class FXMLDocumentController implements Initializable {
     
     public void addMedewerker(String naam, int loon, String mail, Afdeling afdeling) {
         Medewerker med = new Medewerker(getMedewerkerId(), naam, loon, mail);
-
-        if (this.medewerkers.contains(med)) {
-            return;
-        }
-        
-        for (Afdeling afd : afdelingen) {
-            if (afd.equals(afdeling)) {
-                med.setAfdeling(afd);
-            }
-        }
-        
-        medewerkers.add(med);
+        afdeling.addMedewerker(med);
     }
     
     public void populateData() {

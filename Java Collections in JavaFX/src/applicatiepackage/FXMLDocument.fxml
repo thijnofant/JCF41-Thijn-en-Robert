@@ -18,8 +18,6 @@
         </columns>
       </TableView>
       <Button id="btnAddAfdeling" fx:id="btnAddAfdeling" layoutX="210.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleAddAfdeling" text="AddAfdeling" />
-      <Button id="btnEditAfdeling" fx:id="btnEditAfdeling" layoutX="211.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleEditAfdeling" text="EditAfdeling" />
       <Button id="btnAddMedewerker" fx:id="btnAddMedewerker" layoutX="344.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleAddMedewerker" text="AddMedewerker" />
-      <Button id="btnEditMedewerker" fx:id="btnEditMedewerker" layoutX="345.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleEditMedewerker" text="EditMedewerker" />
    </children>
 </AnchorPane>

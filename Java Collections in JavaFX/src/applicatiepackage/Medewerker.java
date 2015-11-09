@@ -17,7 +17,6 @@ public class Medewerker implements Comparable<Medewerker> {
     private SimpleStringProperty naam;
     private SimpleIntegerProperty loon; // TODO welk type moeten deze velden zijn zodat je ze inline in de table kunt aanpassen? //Deze <-
     private SimpleStringProperty email;
-    private Afdeling afdeling;
     
     public Medewerker(int id, String naam, int loon, String email) {
         this.id = new SimpleIntegerProperty(id);
@@ -58,14 +57,6 @@ public class Medewerker implements Comparable<Medewerker> {
         this.email.set(mail);
     }
     
-    public Afdeling getAfdeling() {
-        return this.afdeling;
-    }
-    
-    public void setAfdeling(Afdeling afdeling) {
-        this.afdeling = afdeling;
-    }
-    
     @Override
     public int compareTo(Medewerker o) {
         if ( this.equals(o) ) {
@@ -86,6 +77,6 @@ public class Medewerker implements Comparable<Medewerker> {
     @Override
     public boolean equals(Object o){
         Medewerker m = (Medewerker) o;
-        return ( this.id == m.id && this.naam.equals(m.naam) &&  this.email.equals(m.email) && this.afdeling.equals(m.afdeling) );
+        return ( this.id == m.id && this.naam.equals(m.naam) &&  this.email.equals(m.email) );
     }    
 }
