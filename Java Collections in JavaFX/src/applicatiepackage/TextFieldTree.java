@@ -75,8 +75,8 @@ class TextFieldTree extends TreeCell<Afdeling> {
                 if (t.getCode() == KeyCode.ENTER) {
                     TreeItem<Afdeling> selectedAfd = 
                             (TreeItem<Afdeling>) treeView.getSelectionModel().getSelectedItem();
-                    commitEdit(new Afdeling(selectedAfd.getValue().getId(), textField.getText(),
-                            selectedAfd.getValue().getMedewerkers(), selectedAfd.getValue().getAfdelingen()));
+                    selectedAfd.getValue().setNaam(textField.getText());
+                    commitEdit(selectedAfd.getValue());
                 } else if (t.getCode() == KeyCode.ESCAPE) {
                     cancelEdit();
                 }

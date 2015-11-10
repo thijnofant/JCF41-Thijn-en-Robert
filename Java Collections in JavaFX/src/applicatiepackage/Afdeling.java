@@ -29,13 +29,6 @@ class Afdeling implements Comparable<Afdeling> {
         this.id = Afdeling.LastID+1;
         Afdeling.LastID = this.id;
     }
-    
-    public Afdeling(int id, String naam, ObservableList<Medewerker> medewerkers, List<Afdeling> afdelingen) {
-        this.id = id;
-        this.naam = naam;
-        this.medewerkers = medewerkers;
-        this.afdelingen = afdelingen;
-    }
 
     public int getId() {
         return id;
@@ -51,6 +44,10 @@ class Afdeling implements Comparable<Afdeling> {
     
     public ObservableList<Medewerker> getMedewerkers() {
         return medewerkers;
+    }
+    
+    public void setNaam(String naam) {
+        this.naam = naam;
     }
     
     public void addAfdeling(Afdeling afd){
