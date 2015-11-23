@@ -91,7 +91,6 @@ public class domainTest {
      *          omdat rollback wordt aangeroepen. Hierdoor geeft de assertEquals() true terug omdat
      *          er geen records zijn toegevoegd aan de database.
      */
-    //TODO
     @Test
     public void opdracht2(){
         System.out.println("Opdracht2 Start");
@@ -111,15 +110,15 @@ public class domainTest {
     /**
      * Flushen maar
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1. 
+     * 1.       assertEquals(expected, account.getId()); = true
+     *          assertNotEquals(expected, account.getId()); = true
      * 2.	Welke SQL statements worden gegenereerd?
-     * 2. 
+     * 2.       INSERT INTO ACCOUNT (ACCOUNTNR, BALANCE, THRESHOLD) VALUES (?, ?, ?) bind => [111, 0, 0]
      * 3.	Wat is het eindresultaat in de database?
-     * 3. 
+     * 3.       Account: 111, 0, 0
      * 4.	Verklaring van bovenstaande drie observaties.
-     * 4. 
+     * 4.       
      */
-    //TODO
     @Test
     public void opdracht3(){
         System.out.println("Opdracht3 Start");
@@ -128,9 +127,11 @@ public class domainTest {
         account.setId(expected);
         em.getTransaction().begin();
         em.persist(account);
+        
         //TODO: verklaar en pas eventueel aan
-        //assertNotEquals(expected, account.getId();
+        assertEquals(expected, account.getId());
         em.flush();
+        assertNotEquals(expected, account.getId());
         //TODO: verklaar en pas eventueel aan
         //assertEquals(expected, account.getId();
         em.getTransaction().commit();
@@ -141,15 +142,17 @@ public class domainTest {
     /**
      * Veranderingen na de persist
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1. 
+     * 1.       assertEquals(expectedBalance, account.getBalance()); = true
+     *          assertEquals(expectedBalance, found.getBalance()); = true
      * 2.	Welke SQL statements worden gegenereerd?
-     * 2. 
+     * 2.       INSERT INTO ACCOUNT (ACCOUNTNR, BALANCE, THRESHOLD) VALUES (?, ?, ?) bind => [114, 400, 0]
+                SELECT LAST_INSERT_ID(); result =  [93]
+                SELECT ID, ACCOUNTNR, BALANCE, THRESHOLD FROM ACCOUNT WHERE (ID = ?) bind => [93]
      * 3.	Wat is het eindresultaat in de database?
-     * 3. 
+     * 3.       Account: 93, 114, 400, 0
      * 4.	Verklaring van bovenstaande drie observaties.
-     * 4. 
+     * 4.       
      */
-    //TODO
     @Test
     public void opdracht4(){
         System.out.println("Opdracht4 Start");
@@ -173,15 +176,18 @@ public class domainTest {
     
     /**
      * Refresh
-     * In de vorige opdracht verwijzen de objecten account en found naar dezelfde rij in de database. Pas een van de objecten aan, persisteer naar de database. Refresh vervolgens het andere object om de veranderde state uit de database te halen. Test met asserties dat dit gelukt is.
+     * In de vorige opdracht verwijzen de objecten account en found naar dezelfde rij in de database. 
+       Pas een van de objecten aan, persisteer naar de database. 
+       Refresh vervolgens het andere object om de veranderde state uit de database te halen. 
+       Test met asserties dat dit gelukt is.
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1. 
+     * 1.       
      * 2.	Welke SQL statements worden gegenereerd?
-     * 2. 
+     * 2.       
      * 3.	Wat is het eindresultaat in de database?
-     * 3. 
+     * 3.       
      * 4.	Verklaring van bovenstaande drie observaties.
-     * 4. 
+     * 4.       
      */
     //TODO
     @Test
@@ -194,59 +200,77 @@ public class domainTest {
     /**
      * Merge
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1. 
-     * 2.	Welke SQL statements worden gegenereerd?
-     * 2. 
+     * 1.       
+     * 2.       Welke SQL statements worden gegenereerd?
+     * 2.       
      * 3.	Wat is het eindresultaat in de database?
-     * 3. 
+     * 3.       
      * 4.	Verklaring van bovenstaande drie observaties.
-     * 4. 
+     * 4.       
      */
-    //TODO
     @Test
     public void opdracht6(){
+        
+        // <editor-fold desc="scenario 2:>
+        // </editor-fold>
+        
         System.out.println("Opdracht6 Start");
         Account acc = new Account(1L);
         Account acc2 = new Account(2L);
         Account acc9 = new Account(9L);
-
-        // scenario 1
+     
+        // <editor-fold desc="scenario 1">
         Long balance1 = 100L;
         em.getTransaction().begin();
+        assertNotEquals(balance1, acc.getBalance());
         em.persist(acc);
         acc.setBalance(balance1);
+        assertEquals(balance1, acc.getBalance());
         em.getTransaction().commit();
+        assertEquals(balance1, acc.getBalance());
         //TODO: voeg asserties toe om je verwachte waarde van de attributen te verifieren.
         //TODO: doe dit zowel voor de bovenstaande java objecten als voor opnieuw bij de entitymanager opgevraagde objecten met overeenkomstig Id.
+        // </editor-fold>
 
-        // scenario 2
+        // <editor-fold desc="scenario 2">
         Long balance2a = 211L;
         acc = new Account(2L);
         em.getTransaction().begin();
         acc9 = em.merge(acc);
+        assertEquals(acc.getBalance(), acc9.getBalance());
         acc.setBalance(balance2a);
         acc9.setBalance(balance2a+balance2a);
+        assertEquals((Long)(acc.getBalance()*2L), acc9.getBalance());
+        assertNotEquals(acc.getBalance(), acc9.getBalance());
         em.getTransaction().commit();
         //TODO: voeg asserties toe om je verwachte waarde van de attributen te verifiëren.
         //TODO: doe dit zowel voor de bovenstaande java objecten als voor opnieuw bij de entitymanager opgevraagde objecten met overeenkomstig Id. 
         // HINT: gebruik acccountDAO.findByAccountNr
+        // </editor-fold>
 
-        // scenario 3
+        // <editor-fold desc="scenario 3">        
+        em = emf.createEntityManager();
+        
         Long balance3b = 322L;
         Long balance3c = 333L;
         acc = new Account(3L);
+        em.persist(acc);
         em.getTransaction().begin();
-        acc2 = em.merge(acc);
         assertTrue(em.contains(acc)); // verklaar
+        assertFalse(em.contains(acc2)); // verklaar
+        acc2 = em.merge(acc);
         assertTrue(em.contains(acc2)); // verklaar
         assertEquals(acc,acc2);  //verklaar
         acc2.setBalance(balance3b);
         acc.setBalance(balance3c);
+        assertEquals(acc,acc2);
         em.getTransaction().commit();
+        assertEquals(acc,acc2);
         //TODO: voeg asserties toe om je verwachte waarde van de attributen te verifiëren.
         //TODO: doe dit zowel voor de bovenstaande java objecten als voor opnieuw bij de entitymanager opgevraagde objecten met overeenkomstig Id.
-
-        // scenario 4
+        // </editor-fold>
+        
+        // <editor-fold desc="scenario 4 kan het mondeling verklaren">
         Account account = new Account(114L);
         account.setBalance(450L);
         EntityManager em = emf.createEntityManager();
@@ -269,19 +293,21 @@ public class domainTest {
         assertEquals((Long)650L,account2.getBalance());  //verklaar
         em.getTransaction().commit();
         em.close();
+        // </editor-fold>
+        
         System.out.println("Opdracht6 End");
     }
     
     /**
      * Find en clear
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1. 
+     * 1.       
      * 2.	Welke SQL statements worden gegenereerd?
-     * 2. 
+     * 2.       
      * 3.	Wat is het eindresultaat in de database?
-     * 3. 
+     * 3.       
      * 4.	Verklaring van bovenstaande drie observaties.
-     * 4. 
+     * 4.       
      */
     //TODO
     @Test
@@ -312,15 +338,14 @@ public class domainTest {
     /**
      * Remove
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1. 
+     * 1.       
      * 2.	Welke SQL statements worden gegenereerd?
-     * 2. 
+     * 2.       
      * 3.	Wat is het eindresultaat in de database?
-     * 3. 
+     * 3.       
      * 4.	Verklaring van bovenstaande drie observaties.
-     * 4. 
+     * 4.       
      */
-    //TODO
     @Test
     public void opdracht8(){
         System.out.println("Opdracht8 Start");
@@ -335,7 +360,7 @@ public class domainTest {
         assertEquals(id, acc1.getId());        
         Account accFound = em.find(Account.class, id);
         assertNull(accFound);
-        //TODO: verklaar bovenstaande asserts
+        //Je verwijderd de account en daardoor is deze null
         System.out.println("Opdracht8 End");
     }
     
@@ -346,13 +371,13 @@ public class domainTest {
         Verklaar zowel de verschillen in testresultaat als verschillen van de database structuur.
 
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1. 
+     * 1.       
      * 2.	Welke SQL statements worden gegenereerd?
-     * 2. 
+     * 2.       
      * 3.	Wat is het eindresultaat in de database?
-     * 3. 
+     * 3.       
      * 4.	Verklaring van bovenstaande drie observaties.
-     * 4. 
+     * 4.       
      */
     //TODO
     @Test
