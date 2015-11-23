@@ -79,15 +79,15 @@ public class domainTest {
     /**
      * Rollback
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     *          assertNull(account.getId()); --> Slaagt omdat transactie nog niet gecommit is.
+     * 1.       assertNull(account.getId()); --> Slaagt omdat transactie nog niet gecommit is.
      *          assertEquals("Table Account is niet leeg.", 0, accDAO.count()); --> Slaagt omdat de transactie gerollbacked is.
      * 2.	Welke SQL statements worden gegenereerd?
-     *          DELETE FROM ACCOUNT
+     * 2.       DELETE FROM ACCOUNT
      *          SELECT COUNT(ID) FROM ACCOUNT
      * 3.	Wat is het eindresultaat in de database?
-     *          Een lege account tabel.
+     * 3.       Een lege account tabel.
      * 4.	Verklaring van bovenstaande drie observaties.
-     *          Het account object wordt gepersisteerd. Maar de transactie wordt niet uitgevoerd
+     * 4.       Het account object wordt gepersisteerd. Maar de transactie wordt niet uitgevoerd
      *          omdat rollback wordt aangeroepen. Hierdoor geeft de assertEquals() true terug omdat
      *          er geen records zijn toegevoegd aan de database.
      */
@@ -181,7 +181,8 @@ public class domainTest {
        Refresh vervolgens het andere object om de veranderde state uit de database te halen. 
        Test met asserties dat dit gelukt is.
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1.       
+     * 1.       assertEquals(newBalance, account.getBalance()); = true -> de balans van het object is aangepast
+     *          assertEquals(newBalance, found.getBalance()); = true -> door het aanroepen van de refreshmethode is ook de balans van dit object aangepast
      * 2.	Welke SQL statements worden gegenereerd?
      * 2.       
      * 3.	Wat is het eindresultaat in de database?
@@ -193,7 +194,31 @@ public class domainTest {
     @Test
     public void opdracht5(){
         System.out.println("Opdracht5 Start");
-        assertTrue(false);
+        Long expectedBalance = 400L;
+        Account account = new Account(114L);
+        em.getTransaction().begin();
+        em.persist(account);
+        account.setBalance(expectedBalance);
+        em.getTransaction().commit();
+        assertEquals(expectedBalance, account.getBalance());
+
+        Long acId = account.getId();
+        EntityManager em2 = emf.createEntityManager();
+        em2.getTransaction().begin();
+        Account found = em2.find(Account.class, acId);
+        assertEquals(expectedBalance, found.getBalance());
+        
+        // Begin opdracht 5
+        // Balans eerste object aanpassen.
+        Long newBalance = 222L;
+        em.getTransaction().begin();
+        account.setBalance(newBalance);
+        em.getTransaction().commit();
+        assertEquals(newBalance, account.getBalance());
+        
+        // Tweede object refreshen.
+        em2.refresh(found);
+        assertEquals(newBalance, found.getBalance());
         System.out.println("Opdracht5 End");
     }
     
@@ -301,7 +326,8 @@ public class domainTest {
     /**
      * Find en clear
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1.       
+     * 1.       assertSame(accF1, accF2); = true
+     *          assertNotSame(accF1, accF2); = true
      * 2.	Welke SQL statements worden gegenereerd?
      * 2.       
      * 3.	Wat is het eindresultaat in de database?
@@ -330,7 +356,7 @@ public class domainTest {
         accF1 = em.find(Account.class, acc1.getId());
         em.clear();
         accF2 = em.find(Account.class, acc1.getId());
-        assertSame(accF1, accF2);
+        assertNotSame(accF1, accF2);
         //TODO verklaar verschil tussen beide scenario's
         System.out.println("Opdracht7 End");
     }
@@ -371,20 +397,8 @@ public class domainTest {
         Verklaar zowel de verschillen in testresultaat als verschillen van de database structuur.
 
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1.       
-     * 2.	Welke SQL statements worden gegenereerd?
-     * 2.       
-     * 3.	Wat is het eindresultaat in de database?
-     * 3.       
-     * 4.	Verklaring van bovenstaande drie observaties.
-     * 4.       
-     */
-    //TODO
-    @Test
-    public void opdracht9(){
-        System.out.println("Opdracht9 Start");
-        assertTrue(false);
-        System.out.println("Opdracht9 End");
-     }
-    
+     * 1.       SEQUENCE = Objecten wordt een ID toegekend voordat ze aan de database toegevoegd worden. Hierdoor kunnen
+     *                      gaten ontstaan tussen IDs in de db wanneer objecten aangemaakt worden maar niet gepersisteerd worden.
+     *          TABLE = Bijna hetzelfde als sequence maar table kijkt naar de laatst gebruikte ID en sequence naar de volgende.
+     */   
 }
