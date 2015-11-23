@@ -109,11 +109,15 @@ public class domainTest {
     }
     
     /**
-     * Rollback
+     * Flushen maar
+     * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
      * 1. 
+     * 2.	Welke SQL statements worden gegenereerd?
      * 2. 
+     * 3.	Wat is het eindresultaat in de database?
      * 3. 
-     * 4.
+     * 4.	Verklaring van bovenstaande drie observaties.
+     * 4. 
      */
     //TODO
     @Test
@@ -135,11 +139,15 @@ public class domainTest {
     }
     
     /**
-     * Rollback
+     * Veranderingen na de persist
+     * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
      * 1. 
+     * 2.	Welke SQL statements worden gegenereerd?
      * 2. 
+     * 3.	Wat is het eindresultaat in de database?
      * 3. 
-     * 4.
+     * 4.	Verklaring van bovenstaande drie observaties.
+     * 4. 
      */
     //TODO
     @Test
@@ -164,11 +172,16 @@ public class domainTest {
     }
     
     /**
-     * Rollback
+     * Refresh
+     * In de vorige opdracht verwijzen de objecten account en found naar dezelfde rij in de database. Pas een van de objecten aan, persisteer naar de database. Refresh vervolgens het andere object om de veranderde state uit de database te halen. Test met asserties dat dit gelukt is.
+     * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
      * 1. 
+     * 2.	Welke SQL statements worden gegenereerd?
      * 2. 
+     * 3.	Wat is het eindresultaat in de database?
      * 3. 
-     * 4.
+     * 4.	Verklaring van bovenstaande drie observaties.
+     * 4. 
      */
     //TODO
     @Test
@@ -179,11 +192,15 @@ public class domainTest {
     }
     
     /**
-     * Rollback
+     * Merge
+     * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
      * 1. 
+     * 2.	Welke SQL statements worden gegenereerd?
      * 2. 
+     * 3.	Wat is het eindresultaat in de database?
      * 3. 
-     * 4.
+     * 4.	Verklaring van bovenstaande drie observaties.
+     * 4. 
      */
     //TODO
     @Test
@@ -256,11 +273,15 @@ public class domainTest {
     }
     
     /**
-     * Rollback
+     * Find en clear
+     * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
      * 1. 
+     * 2.	Welke SQL statements worden gegenereerd?
      * 2. 
+     * 3.	Wat is het eindresultaat in de database?
      * 3. 
-     * 4.
+     * 4.	Verklaring van bovenstaande drie observaties.
+     * 4. 
      */
     //TODO
     @Test
@@ -289,11 +310,15 @@ public class domainTest {
     }
     
     /**
-     * Rollback
+     * Remove
+     * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
      * 1. 
+     * 2.	Welke SQL statements worden gegenereerd?
      * 2. 
+     * 3.	Wat is het eindresultaat in de database?
      * 3. 
-     * 4.
+     * 4.	Verklaring van bovenstaande drie observaties.
+     * 4. 
      */
     //TODO
     @Test
@@ -315,11 +340,19 @@ public class domainTest {
     }
     
     /**
-     * Rollback
+     * Generation type
+     * Opgave 1 heb je uitgevoerd met @GeneratedValue(strategy = GenerationType.IDENTITY)
+        Voer dezelfde opdracht nu uit met GenerationType SEQUENCE en TABLE.
+        Verklaar zowel de verschillen in testresultaat als verschillen van de database structuur.
+
+     * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
      * 1. 
+     * 2.	Welke SQL statements worden gegenereerd?
      * 2. 
+     * 3.	Wat is het eindresultaat in de database?
      * 3. 
-     * 4.
+     * 4.	Verklaring van bovenstaande drie observaties.
+     * 4. 
      */
     //TODO
     @Test
