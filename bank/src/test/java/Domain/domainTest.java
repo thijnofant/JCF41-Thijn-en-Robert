@@ -5,15 +5,12 @@
  */
 package Domain;
 
+import bank.dao.AccountDAOJPAImpl;
 import bank.domain.Account;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import static org.eclipse.persistence.sessions.SessionProfiler.Transaction;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import util.DatabaseCleaner;
@@ -82,13 +79,17 @@ public class domainTest {
     /**
      * Rollback
      * 1.	Wat is de waarde van asserties en printstatements? Corrigeer verkeerde asserties zodat de test ‘groen’ wordt.
-     * 1. 
+     *          assertNull(account.getId()); --> Slaagt omdat transactie nog niet gecommit is.
+     *          assertEquals("Table Account is niet leeg.", 0, accDAO.count()); --> Slaagt omdat de transactie gerollbacked is.
      * 2.	Welke SQL statements worden gegenereerd?
-     * 2. 
+     *          DELETE FROM ACCOUNT
+     *          SELECT COUNT(ID) FROM ACCOUNT
      * 3.	Wat is het eindresultaat in de database?
-     * 3. 
+     *          Een lege account tabel.
      * 4.	Verklaring van bovenstaande drie observaties.
-     * 4. 
+     *          Het account object wordt gepersisteerd. Maar de transactie wordt niet uitgevoerd
+     *          omdat rollback wordt aangeroepen. Hierdoor geeft de assertEquals() true terug omdat
+     *          er geen records zijn toegevoegd aan de database.
      */
     //TODO
     @Test
@@ -99,7 +100,11 @@ public class domainTest {
         em.persist(account);
         assertNull(account.getId());
         em.getTransaction().rollback();
-        // TODO code om te testen dat table account geen records bevat. Hint: bestudeer/gebruik AccountDAOJPAImpl
+        
+        // TODO code om te testen dat table account geen records bevat. 
+        // Hint: bestudeer/gebruik AccountDAOJPAImpl
+        AccountDAOJPAImpl accDAO = new AccountDAOJPAImpl(em);
+        assertEquals("Table Account is niet leeg.", 0, accDAO.count());
         System.out.println("Opdracht2 End");
     }
     
