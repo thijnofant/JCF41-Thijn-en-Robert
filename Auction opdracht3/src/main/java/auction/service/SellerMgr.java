@@ -39,18 +39,17 @@ public class SellerMgr {
      *         false als er al geboden was op het item.
      */
     public boolean revokeItem(Item item) {
-        em = emf.createEntityManager();
-        itemDAO = new ItemDAOJPAImpl(em);
-        em.getTransaction().begin();
-        Item foundItem = itemDAO.find(item.getId());
+        
 
-        if (foundItem.getHighestBid() != null) {
-            em.getTransaction().commit();
+        if (item.getHighestBid() != null) {
             return false;
         }
         else
         {
-            itemDAO.remove(foundItem);
+            em = emf.createEntityManager();
+            itemDAO = new ItemDAOJPAImpl(em);
+            em.getTransaction().begin();
+            itemDAO.remove(item);
             em.getTransaction().commit();
             return true;
         }

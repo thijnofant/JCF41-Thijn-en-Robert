@@ -29,6 +29,8 @@ public class SellerMgrTest {
     
     @Before
     public void setUp() throws Exception {
+        em = emf.createEntityManager();
+        dc = new DatabaseCleaner(em);
         try{
             dc.clean();
         }
