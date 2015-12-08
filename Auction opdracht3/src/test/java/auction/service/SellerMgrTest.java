@@ -12,6 +12,10 @@ import org.junit.Test;
 import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import util.DatabaseCleaner;
 
 public class SellerMgrTest {
 
@@ -19,8 +23,19 @@ public class SellerMgrTest {
     private RegistrationMgr registrationMgr;
     private SellerMgr sellerMgr;
 
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("auctionPU");
+    EntityManager em = emf.createEntityManager();
+    DatabaseCleaner dc = new DatabaseCleaner(em);
+    
     @Before
     public void setUp() throws Exception {
+        try{
+            dc.clean();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
         registrationMgr = new RegistrationMgr();
         auctionMgr = new AuctionMgr();
         sellerMgr = new SellerMgr();
@@ -38,6 +53,7 @@ public class SellerMgrTest {
         Item item1 = sellerMgr.offerItem(user1, cat, omsch);
         assertEquals(omsch, item1.getDescription());
         assertNotNull(item1.getId());
+        boolean res = sellerMgr.revokeItem(item1);
     }
 
     /**

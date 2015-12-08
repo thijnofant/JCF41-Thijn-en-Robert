@@ -12,6 +12,11 @@ import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import util.DatabaseCleaner;
 
 public class AuctionMgrTest {
 
@@ -19,14 +24,25 @@ public class AuctionMgrTest {
     private RegistrationMgr registrationMgr;
     private SellerMgr sellerMgr;
 
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("auctionPU");
+    EntityManager em = emf.createEntityManager();
+    DatabaseCleaner dc = new DatabaseCleaner(em);
+    
     @Before
     public void setUp() throws Exception {
+        try{
+            dc.clean();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
         registrationMgr = new RegistrationMgr();
         auctionMgr = new AuctionMgr();
         sellerMgr = new SellerMgr();
     }
 
-    //@Test
+    @Test
     public void getItem() {
 
         String email = "xx2@nl";
@@ -40,7 +56,7 @@ public class AuctionMgrTest {
         assertEquals(email, item2.getSeller().getEmail());
     }
 
-    //@Test
+    @Test
     public void findItemByDescription() {
         String email3 = "xx3@nl";
         String omsch = "omsch";
@@ -53,10 +69,10 @@ public class AuctionMgrTest {
         Item item1 = sellerMgr.offerItem(seller3, cat, omsch);
         Item item2 = sellerMgr.offerItem(seller4, cat, omsch);
 
-        ArrayList<Item> res = (ArrayList<Item>) auctionMgr.findItemByDescription(omsch2);
+        List<Item> res = auctionMgr.findItemByDescription(omsch2);
         assertEquals(0, res.size());
 
-        res = (ArrayList<Item>) auctionMgr.findItemByDescription(omsch);
+        res = auctionMgr.findItemByDescription(omsch);
         assertEquals(2, res.size());
 
     }
@@ -79,8 +95,7 @@ public class AuctionMgrTest {
         assertEquals(emailb, new1.getBuyer().getEmail());
 
         // lager bod
-        Bid new2 = auctionMgr.newBid(item1, buyer2, new Money(9, "eur"));
-        assertNull(new2);
+        assertNull(auctionMgr.newBid(item1, buyer2, new Money(9, "eur")));
 
         // hoger bod
         Bid new3 = auctionMgr.newBid(item1, buyer2, new Money(11, "eur"));

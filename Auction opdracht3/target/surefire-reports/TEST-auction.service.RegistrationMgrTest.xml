@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="3" name="auction.service.RegistrationMgrTest" time="0.024" errors="0" skipped="0">
+<testsuite tests="3" failures="3" name="auction.service.RegistrationMgrTest" time="0.013" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_60\jre\bin"/>
@@ -62,12 +62,12 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase classname="auction.service.RegistrationMgrTest" name="registerUser" time="0">
-    <failure message="expected same:&lt;auction.domain.User@2db33feb&gt; was not:&lt;auction.domain.User@7e351d7&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected same:&lt;auction.domain.User@2db33feb&gt; was not:&lt;auction.domain.User@7e351d7&gt;
+    <failure message="expected same:&lt;auction.domain.User@7c37f145&gt; was not:&lt;auction.domain.User@65fe2691&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected same:&lt;auction.domain.User@7c37f145&gt; was not:&lt;auction.domain.User@65fe2691&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotSame(Assert.java:737)
 	at org.junit.Assert.assertSame(Assert.java:680)
 	at org.junit.Assert.assertSame(Assert.java:691)
-	at auction.service.RegistrationMgrTest.registerUser(RegistrationMgrTest.java:28)
+	at auction.service.RegistrationMgrTest.registerUser(RegistrationMgrTest.java:29)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -99,21 +99,21 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </failure>
-    <system-out>[EL Fine]: sql: 2015-12-08 16:29:07.69--ServerSession(1863932867)--Connection(1488298739)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
+    <system-out>[EL Fine]: sql: 2015-12-08 21:34:22.262--ServerSession(2116908859)--Connection(775093282)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
 	bind =&gt; [xxx1@yyy]
-[EL Fine]: sql: 2015-12-08 16:29:07.692--ServerSession(1863932867)--Connection(1488298739)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
+[EL Fine]: sql: 2015-12-08 21:34:22.264--ServerSession(2116908859)--Connection(775093282)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
 	bind =&gt; [xxx2@yyy2]
-[EL Fine]: sql: 2015-12-08 16:29:07.694--ServerSession(1863932867)--Connection(1488298739)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
+[EL Fine]: sql: 2015-12-08 21:34:22.266--ServerSession(2116908859)--Connection(775093282)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
 	bind =&gt; [xxx2@yyy2]
 </system-out>
   </testcase>
   <testcase classname="auction.service.RegistrationMgrTest" name="getUser" time="0.001">
-    <failure message="expected same:&lt;auction.domain.User@4c6b4ed7&gt; was not:&lt;auction.domain.User@4d84049a&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected same:&lt;auction.domain.User@4c6b4ed7&gt; was not:&lt;auction.domain.User@4d84049a&gt;
+    <failure message="expected same:&lt;auction.domain.User@3a2e9f5b&gt; was not:&lt;auction.domain.User@7f4701b1&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected same:&lt;auction.domain.User@3a2e9f5b&gt; was not:&lt;auction.domain.User@7f4701b1&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotSame(Assert.java:737)
 	at org.junit.Assert.assertSame(Assert.java:680)
 	at org.junit.Assert.assertSame(Assert.java:691)
-	at auction.service.RegistrationMgrTest.getUser(RegistrationMgrTest.java:37)
+	at auction.service.RegistrationMgrTest.getUser(RegistrationMgrTest.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -145,20 +145,20 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </failure>
-    <system-out>[EL Fine]: sql: 2015-12-08 16:29:07.701--ServerSession(1863932867)--Connection(1488298739)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
+    <system-out>[EL Fine]: sql: 2015-12-08 21:34:22.274--ServerSession(2116908859)--Connection(775093282)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
 	bind =&gt; [xxx5@yyy5]
-[EL Fine]: sql: 2015-12-08 16:29:07.702--ServerSession(1863932867)--Connection(1488298739)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
+[EL Fine]: sql: 2015-12-08 21:34:22.28--ServerSession(2116908859)--Connection(775093282)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
 	bind =&gt; [xxx5@yyy5]
 </system-out>
   </testcase>
-  <testcase classname="auction.service.RegistrationMgrTest" name="getUsers" time="0.01">
-    <failure message="expected:&lt;0&gt; but was:&lt;9&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;0&gt; but was:&lt;9&gt;
+  <testcase classname="auction.service.RegistrationMgrTest" name="getUsers" time="0">
+    <failure message="expected:&lt;0&gt; but was:&lt;6&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;0&gt; but was:&lt;6&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
 	at org.junit.Assert.assertEquals(Assert.java:118)
 	at org.junit.Assert.assertEquals(Assert.java:555)
 	at org.junit.Assert.assertEquals(Assert.java:542)
-	at auction.service.RegistrationMgrTest.getUsers(RegistrationMgrTest.java:46)
+	at auction.service.RegistrationMgrTest.getUsers(RegistrationMgrTest.java:47)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -190,7 +190,7 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </failure>
-    <system-out>[EL Fine]: sql: 2015-12-08 16:29:07.709--ServerSession(1863932867)--Connection(1488298739)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker
+    <system-out>[EL Fine]: sql: 2015-12-08 21:34:22.288--ServerSession(2116908859)--Connection(775093282)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker
 </system-out>
   </testcase>
 </testsuite>

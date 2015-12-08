@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="auction.service.AuctionMgrTest" time="1.771" errors="1" skipped="0">
+<testsuite tests="3" failures="1" name="auction.service.AuctionMgrTest" time="1.897" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_60\jre\bin"/>
@@ -14,7 +14,6 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="test" value="auction.service.AuctionMgrTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="D:\Users\Thijn\Documents\GitHub\JCF41-Thijn-en-Robert\Auction opdracht3"/>
     <property name="java.runtime.version" value="1.8.0_60-b27"/>
@@ -27,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar"/>
     <property name="classworlds.conf" value="C:\Program Files\NetBeans 8.0.2\java\maven\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_60\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\app\client\Thijn\product\12.1.0\client_1;D:\app\client\Thijn\product\12.1.0\client_1\bin;D:\app\Thijn\product\11.2.0\client_2;D:\app\Thijn\product\11.2.0\client_2\bin;D:\app\Thijn\product\11.2.0\client_1;D:\app\Thijn\product\11.2.0\client_1\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;D:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\RailsInstaller\Ruby2.1.0\bin;C:\Users\Thijn\AppData\Local\atom\bin;D:\phantomjs-2.0.0-windows\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;."/>
@@ -45,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_60\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=auction.service.AuctionMgrTest -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar;C:\Program Files\NetBeans 8.0.2\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -62,9 +61,16 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="auction.service.AuctionMgrTest" name="newBid" time="1.731">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at auction.service.AuctionMgrTest.newBid(AuctionMgrTest.java:79)
+  <testcase classname="auction.service.AuctionMgrTest" name="newBid" time="0.095"/>
+  <testcase classname="auction.service.AuctionMgrTest" name="getItem" time="0.029"/>
+  <testcase classname="auction.service.AuctionMgrTest" name="findItemByDescription" time="0.033">
+    <failure message="expected:&lt;2&gt; but was:&lt;3&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;2&gt; but was:&lt;3&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at auction.service.AuctionMgrTest.findItemByDescription(AuctionMgrTest.java:76)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -95,78 +101,58 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</error>
-    <system-out>[EL Config]: metadata: 2015-12-08 16:41:08.637--ServerSession(561247961)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Bid] is set to [FIELD].
-[EL Config]: metadata: 2015-12-08 16:41:08.659--ServerSession(561247961)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field buyer] is being defaulted to: class auction.domain.User.
-[EL Config]: metadata: 2015-12-08 16:41:08.66--ServerSession(561247961)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Item] is set to [FIELD].
-[EL Config]: metadata: 2015-12-08 16:41:08.66--ServerSession(561247961)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field seller] is being defaulted to: class auction.domain.User.
-[EL Config]: metadata: 2015-12-08 16:41:08.66--ServerSession(561247961)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field highest] is being defaulted to: class auction.domain.Bid.
-[EL Config]: metadata: 2015-12-08 16:41:08.662--ServerSession(561247961)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.User] is set to [FIELD].
-[EL Config]: metadata: 2015-12-08 16:41:08.662--ServerSession(561247961)--Thread(Thread[main,5,main])--The access type for the persistent class [class nl.fontys.util.Money] is set to [FIELD].
-[EL Config]: metadata: 2015-12-08 16:41:08.662--ServerSession(561247961)--Thread(Thread[main,5,main])--The access type for the persistent class [class nl.fontys.util.FontysTime] is set to [FIELD].
-[EL Config]: metadata: 2015-12-08 16:41:08.663--ServerSession(561247961)--Thread(Thread[main,5,main])--The access type for the persistent class [class auction.domain.Category] is set to [FIELD].
-[EL Config]: metadata: 2015-12-08 16:41:08.676--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [cents] is being defaulted to: CENTS.
-[EL Config]: metadata: 2015-12-08 16:41:08.677--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [currency] is being defaulted to: CURRENCY.
-[EL Config]: metadata: 2015-12-08 16:41:08.677--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2015-12-08 16:41:08.678--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [seconds] is being defaulted to: SECONDS.
-[EL Config]: metadata: 2015-12-08 16:41:08.679--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [description] is being defaulted to: DESCRIPTION.
-[EL Config]: metadata: 2015-12-08 16:41:08.679--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2015-12-08 16:41:08.679--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [description] is being defaulted to: DESCRIPTION.
-[EL Config]: metadata: 2015-12-08 16:41:08.679--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2015-12-08 16:41:08.68--ServerSession(561247961)--Thread(Thread[main,5,main])--The column name for element [email] is being defaulted to: EMAIL.
-[EL Config]: metadata: 2015-12-08 16:41:08.695--ServerSession(561247961)--Thread(Thread[main,5,main])--The primary key column name for the mapping element [field buyer] is being defaulted to: ID.
-[EL Config]: metadata: 2015-12-08 16:41:08.695--ServerSession(561247961)--Thread(Thread[main,5,main])--The foreign key column name for the mapping element [buyer] is being defaulted to: BUYER_ID.
-[EL Config]: metadata: 2015-12-08 16:41:08.695--ServerSession(561247961)--Thread(Thread[main,5,main])--The primary key column name for the mapping element [field seller] is being defaulted to: ID.
-[EL Config]: metadata: 2015-12-08 16:41:08.695--ServerSession(561247961)--Thread(Thread[main,5,main])--The foreign key column name for the mapping element [seller] is being defaulted to: SELLER_ID.
-[EL Config]: metadata: 2015-12-08 16:41:08.696--ServerSession(561247961)--Thread(Thread[main,5,main])--The primary key column name for the mapping element [field highest] is being defaulted to: ID.
-[EL Config]: metadata: 2015-12-08 16:41:08.696--ServerSession(561247961)--Thread(Thread[main,5,main])--The foreign key column name for the mapping element [highest] is being defaulted to: HIGHEST_ID.
-[EL Info]: 2015-12-08 16:41:09.255--ServerSession(561247961)--Thread(Thread[main,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd
-[EL Fine]: connection: 2015-12-08 16:41:09.34--Thread(Thread[main,5,main])--Detected database platform: org.eclipse.persistence.platform.database.JavaDBPlatform
-[EL Config]: connection: 2015-12-08 16:41:09.369--ServerSession(561247961)--Connection(1505123790)--Thread(Thread[main,5,main])--connecting(DatabaseLogin(
+</failure>
+    <system-out>[EL Fine]: sql: 2015-12-08 21:38:48.164--ClientSession(1942211849)--Connection(1051927339)--Thread(Thread[main,5,main])--DELETE FROM Gebruiker
+[EL Fine]: sql: 2015-12-08 21:38:48.166--ClientSession(1942211849)--Thread(Thread[main,5,main])--VALUES(1)
+[EL Warning]: 2015-12-08 21:38:48.167--UnitOfWork(1043773344)--Thread(Thread[main,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: org.apache.derby.shared.common.error.DerbySQLIntegrityConstraintViolationException: DELETE on table &apos;GEBRUIKER&apos; caused a violation of foreign key constraint &apos;UCTIONITEMSELLERID&apos; for key (1).  The statement has been rolled back.
+Error Code: 20000
+Call: DELETE FROM Gebruiker
+Query: DeleteAllQuery(referenceClass=User sql=&quot;DELETE FROM Gebruiker&quot;)
+Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: org.apache.derby.shared.common.error.DerbySQLIntegrityConstraintViolationException: DELETE on table &apos;GEBRUIKER&apos; caused a violation of foreign key constraint &apos;UCTIONITEMSELLERID&apos; for key (1).  The statement has been rolled back.
+Error Code: 20000
+Call: DELETE FROM Gebruiker
+Query: DeleteAllQuery(referenceClass=User sql=&quot;DELETE FROM Gebruiker&quot;)
+[EL Config]: connection: 2015-12-08 21:38:48.174--ServerSession(1297149880)--Connection(937860163)--Thread(Thread[main,5,main])--connecting(DatabaseLogin(
 	platform=&gt;JavaDBPlatform
 	user name=&gt; &quot;app&quot;
 	datasource URL=&gt; &quot;jdbc:derby://localhost:1527/sample&quot;
 ))
-[EL Config]: connection: 2015-12-08 16:41:09.371--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--Connected: jdbc:derby://localhost:1527/sample
+[EL Config]: connection: 2015-12-08 21:38:48.176--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--Connected: jdbc:derby://localhost:1527/sample
 	User: app
 	Database: Apache Derby  Version: 10.11.1.2 - (1629631)
 	Driver: Apache Derby Network Client JDBC Driver  Version: 10.12.1.1 - (1704137)
-[EL Info]: connection: 2015-12-08 16:41:09.47--ServerSession(561247961)--Thread(Thread[main,5,main])--file:/D:/Users/Thijn/Documents/GitHub/JCF41-Thijn-en-Robert/Auction opdracht3/target/classes/_auctionPU login successful
-[EL Fine]: sql: 2015-12-08 16:41:09.483--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--ALTER TABLE AuctionItem DROP CONSTRAINT ctionItemHIGHESTID
-[EL Fine]: sql: 2015-12-08 16:41:09.512--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--ALTER TABLE AuctionItem DROP CONSTRAINT uctionItemSELLERID
-[EL Fine]: sql: 2015-12-08 16:41:09.529--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--ALTER TABLE Bid DROP CONSTRAINT FK_Bid_BUYER_ID
-[EL Fine]: sql: 2015-12-08 16:41:09.544--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--DROP TABLE AuctionItem
-[EL Fine]: sql: 2015-12-08 16:41:09.582--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--DROP TABLE Gebruiker
-[EL Fine]: sql: 2015-12-08 16:41:09.633--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--DROP TABLE Bid
-[EL Fine]: sql: 2015-12-08 16:41:09.67--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--CREATE TABLE AuctionItem (ID BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, DESCRIPTION VARCHAR(255), c_description VARCHAR(255), SELLER_ID BIGINT, HIGHEST_ID BIGINT, PRIMARY KEY (ID))
-[EL Fine]: sql: 2015-12-08 16:41:09.708--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--CREATE TABLE Gebruiker (ID BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, EMAIL VARCHAR(255) UNIQUE, PRIMARY KEY (ID))
-[EL Fine]: sql: 2015-12-08 16:41:09.757--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--CREATE TABLE Bid (ID BIGINT GENERATED BY DEFAULT AS IDENTITY NOT NULL, CENTS BIGINT, CURRENCY VARCHAR(255), SECONDS BIGINT, BUYER_ID BIGINT, PRIMARY KEY (ID))
-[EL Fine]: sql: 2015-12-08 16:41:09.786--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--ALTER TABLE AuctionItem ADD CONSTRAINT ctionItemHIGHESTID FOREIGN KEY (HIGHEST_ID) REFERENCES Bid (ID)
-[EL Fine]: sql: 2015-12-08 16:41:09.807--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--ALTER TABLE AuctionItem ADD CONSTRAINT uctionItemSELLERID FOREIGN KEY (SELLER_ID) REFERENCES Gebruiker (ID)
-[EL Fine]: sql: 2015-12-08 16:41:09.827--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--ALTER TABLE Bid ADD CONSTRAINT FK_Bid_BUYER_ID FOREIGN KEY (BUYER_ID) REFERENCES Gebruiker (ID)
-[EL Fine]: sql: 2015-12-08 16:41:09.934--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
-	bind =&gt; [ss2@nl]
-[EL Fine]: sql: 2015-12-08 16:41:09.944--ClientSession(540876179)--Connection(327561535)--Thread(Thread[main,5,main])--INSERT INTO Gebruiker (EMAIL) VALUES (?)
-	bind =&gt; [ss2@nl]
-[EL Fine]: sql: 2015-12-08 16:41:09.947--ClientSession(540876179)--Connection(327561535)--Thread(Thread[main,5,main])--values IDENTITY_VAL_LOCAL()
-[EL Fine]: sql: 2015-12-08 16:41:09.953--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
-	bind =&gt; [bb@nl]
-[EL Fine]: sql: 2015-12-08 16:41:09.954--ClientSession(1198952052)--Connection(327561535)--Thread(Thread[main,5,main])--INSERT INTO Gebruiker (EMAIL) VALUES (?)
-	bind =&gt; [bb@nl]
-[EL Fine]: sql: 2015-12-08 16:41:09.955--ClientSession(1198952052)--Connection(327561535)--Thread(Thread[main,5,main])--values IDENTITY_VAL_LOCAL()
-[EL Fine]: sql: 2015-12-08 16:41:09.957--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
-	bind =&gt; [bb2@nl]
-[EL Fine]: sql: 2015-12-08 16:41:09.958--ClientSession(877785117)--Connection(327561535)--Thread(Thread[main,5,main])--INSERT INTO Gebruiker (EMAIL) VALUES (?)
-	bind =&gt; [bb2@nl]
-[EL Fine]: sql: 2015-12-08 16:41:09.959--ClientSession(877785117)--Connection(327561535)--Thread(Thread[main,5,main])--values IDENTITY_VAL_LOCAL()
-[EL Fine]: sql: 2015-12-08 16:41:09.961--ServerSession(561247961)--Connection(327561535)--Thread(Thread[main,5,main])--SELECT ID FROM Gebruiker WHERE (ID = ?)
-	bind =&gt; [1]
-[EL Fine]: sql: 2015-12-08 16:41:09.964--ClientSession(2041504298)--Connection(327561535)--Thread(Thread[main,5,main])--INSERT INTO AuctionItem (DESCRIPTION, c_description, SELLER_ID, HIGHEST_ID) VALUES (?, ?, ?, ?)
-	bind =&gt; [omsch_bb, cat9, 1, null]
-[EL Fine]: sql: 2015-12-08 16:41:09.969--ClientSession(2041504298)--Connection(327561535)--Thread(Thread[main,5,main])--values IDENTITY_VAL_LOCAL()
-buyerauction.domain.User@3c380bd8
-TEST OUT auction.domain.Bid@2e86807a
-TEST OUT null
+[EL Fine]: sql: 2015-12-08 21:38:48.176--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
+	bind =&gt; [xx3@nl]
+[EL Fine]: sql: 2015-12-08 21:38:48.177--ClientSession(1368251707)--Connection(1551760389)--Thread(Thread[main,5,main])--INSERT INTO Gebruiker (EMAIL) VALUES (?)
+	bind =&gt; [xx3@nl]
+[EL Fine]: sql: 2015-12-08 21:38:48.178--ClientSession(1368251707)--Connection(1551760389)--Thread(Thread[main,5,main])--values IDENTITY_VAL_LOCAL()
+[EL Fine]: sql: 2015-12-08 21:38:48.179--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (EMAIL = ?)
+	bind =&gt; [xx4@nl]
+[EL Fine]: sql: 2015-12-08 21:38:48.18--ClientSession(1232819726)--Connection(1551760389)--Thread(Thread[main,5,main])--INSERT INTO Gebruiker (EMAIL) VALUES (?)
+	bind =&gt; [xx4@nl]
+[EL Fine]: sql: 2015-12-08 21:38:48.18--ClientSession(1232819726)--Connection(1551760389)--Thread(Thread[main,5,main])--values IDENTITY_VAL_LOCAL()
+[EL Fine]: sql: 2015-12-08 21:38:48.181--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID FROM Gebruiker WHERE (ID = ?)
+	bind =&gt; [5]
+[EL Fine]: sql: 2015-12-08 21:38:48.182--ClientSession(1896000574)--Connection(1551760389)--Thread(Thread[main,5,main])--INSERT INTO AuctionItem (DESCRIPTION, c_description, SELLER_ID, HIGHEST_ID) VALUES (?, ?, ?, ?)
+	bind =&gt; [omsch, cat3, 5, null]
+[EL Fine]: sql: 2015-12-08 21:38:48.183--ClientSession(1896000574)--Connection(1551760389)--Thread(Thread[main,5,main])--values IDENTITY_VAL_LOCAL()
+[EL Fine]: sql: 2015-12-08 21:38:48.184--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID FROM Gebruiker WHERE (ID = ?)
+	bind =&gt; [6]
+[EL Fine]: sql: 2015-12-08 21:38:48.185--ClientSession(2077845538)--Connection(1551760389)--Thread(Thread[main,5,main])--INSERT INTO AuctionItem (DESCRIPTION, c_description, SELLER_ID, HIGHEST_ID) VALUES (?, ?, ?, ?)
+	bind =&gt; [omsch, cat3, 6, null]
+[EL Fine]: sql: 2015-12-08 21:38:48.186--ClientSession(2077845538)--Connection(1551760389)--Thread(Thread[main,5,main])--values IDENTITY_VAL_LOCAL()
+[EL Fine]: sql: 2015-12-08 21:38:48.187--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID, DESCRIPTION, c_description, SELLER_ID, HIGHEST_ID FROM AuctionItem WHERE (DESCRIPTION = ?)
+	bind =&gt; [omsch2]
+[EL Fine]: sql: 2015-12-08 21:38:48.19--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID, DESCRIPTION, c_description, SELLER_ID, HIGHEST_ID FROM AuctionItem WHERE (DESCRIPTION = ?)
+	bind =&gt; [omsch]
+[EL Fine]: sql: 2015-12-08 21:38:48.191--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (ID = ?)
+	bind =&gt; [4]
+[EL Fine]: sql: 2015-12-08 21:38:48.192--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (ID = ?)
+	bind =&gt; [5]
+[EL Fine]: sql: 2015-12-08 21:38:48.193--ServerSession(1297149880)--Connection(1551760389)--Thread(Thread[main,5,main])--SELECT ID, EMAIL FROM Gebruiker WHERE (ID = ?)
+	bind =&gt; [6]
 </system-out>
   </testcase>
 </testsuite>

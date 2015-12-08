@@ -43,14 +43,15 @@ public class SellerMgr {
         itemDAO = new ItemDAOJPAImpl(em);
         em.getTransaction().begin();
         Item foundItem = itemDAO.find(item.getId());
-        em.getTransaction().commit();
-        
+
         if (foundItem.getHighestBid() != null) {
+            em.getTransaction().commit();
             return false;
         }
         else
         {
             itemDAO.remove(foundItem);
+            em.getTransaction().commit();
             return true;
         }
     }

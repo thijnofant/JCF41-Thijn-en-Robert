@@ -54,10 +54,7 @@ public class AuctionMgr  {
      *         amount niet hoger was dan het laatste bod, dan null
      */
     public Bid newBid(Item item, User buyer, Money amount) {
-        System.out.println("buyer" + buyer);
         Bid temp = item.newBid(buyer, amount);
-        System.out.println("TEST OUT " + temp);
-        System.out.println("TEST OUT " + temp.getBuyer());
         return temp;
     }
 }

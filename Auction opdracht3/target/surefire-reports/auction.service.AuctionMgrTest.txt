@@ -1,10 +1,15 @@
 -------------------------------------------------------------------------------
 Test set: auction.service.AuctionMgrTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.765 sec <<< FAILURE!
-newBid(auction.service.AuctionMgrTest)  Time elapsed: 1.731 sec  <<< ERROR!
-java.lang.NullPointerException
-	at auction.service.AuctionMgrTest.newBid(AuctionMgrTest.java:79)
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.89 sec <<< FAILURE!
+findItemByDescription(auction.service.AuctionMgrTest)  Time elapsed: 0.033 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<3>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:743)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:555)
+	at org.junit.Assert.assertEquals(Assert.java:542)
+	at auction.service.AuctionMgrTest.findItemByDescription(AuctionMgrTest.java:76)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

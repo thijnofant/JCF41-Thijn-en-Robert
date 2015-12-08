@@ -18,7 +18,8 @@ public class Bid {
     private Money amount;
 
     public Bid(User buyer, Money amount) {
-        //TODO
+        this.buyer = buyer;
+        this.amount = amount;
     }
 
     public Bid(){}
