@@ -400,5 +400,6 @@ public class domainTest {
      * 1.       SEQUENCE = Objecten wordt een ID toegekend voordat ze aan de database toegevoegd worden. Hierdoor kunnen
      *                      gaten ontstaan tussen IDs in de db wanneer objecten aangemaakt worden maar niet gepersisteerd worden.
      *          TABLE = Bijna hetzelfde als sequence maar table kijkt naar de laatst gebruikte ID en sequence naar de volgende.
-     */   
+     */
+   
 }
