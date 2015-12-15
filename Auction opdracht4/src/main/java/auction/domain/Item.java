@@ -10,7 +10,7 @@ import nl.fontys.util.Money;
 })
 public class Item implements Comparable {
 
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
@@ -23,7 +23,7 @@ public class Item implements Comparable {
     private Category category;
     
     private String description;
-    @OneToOne(mappedBy = "item")
+    @OneToOne(mappedBy = "item", cascade=CascadeType.REMOVE)
     private Bid highest;
 
     public Item(User seller, Category category, String description) {

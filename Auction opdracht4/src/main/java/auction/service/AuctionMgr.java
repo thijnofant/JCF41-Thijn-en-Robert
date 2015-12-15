@@ -55,12 +55,13 @@ public class AuctionMgr  {
      */
     public Bid newBid(Item item, User buyer, Money amount) {
         Bid temp = item.newBid(buyer, amount);
-        
-        em = emf.createEntityManager();
-        itemDAO = new ItemDAOJPAImpl(em);
-        em.getTransaction().begin();
-        em.persist(temp);
-        em.getTransaction().commit();
+        if (temp != null) {
+            em = emf.createEntityManager();
+            itemDAO = new ItemDAOJPAImpl(em);
+            em.getTransaction().begin();
+            em.persist(temp);
+            em.getTransaction().commit();
+        }
         return temp;
     }
 }

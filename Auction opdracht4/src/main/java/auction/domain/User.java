@@ -19,7 +19,7 @@ public class User {
     private Long id;
     @Column(unique = true)
     private String email;
-    @OneToMany(mappedBy = "seller")
+    @OneToMany(mappedBy = "seller", cascade=CascadeType.REMOVE)
     private Set<Item> offeredItems = new HashSet<>();
     
     public User(){

@@ -53,8 +53,8 @@ public class JPARegistrationMgrTest {
 
     @Test
     public void getUser() {
-        User user1 = registrationMgr.registerUser("xxx5@yyy5");
-        User userGet = registrationMgr.getUser("xxx5@yyy5");
+        User user1 = registrationMgr.registerUser("xxx5@yyy55");
+        User userGet = registrationMgr.getUser("xxx5@yyy55");
         assertEquals(userGet, user1);
         assertNull(registrationMgr.getUser("aaa4@bb5"));
         registrationMgr.registerUser("abc");
@@ -66,13 +66,13 @@ public class JPARegistrationMgrTest {
         List<User> users = registrationMgr.getUsers();
         assertEquals(0, users.size());
 
-        User user1 = registrationMgr.registerUser("xxx8@yyy");
+        User user1 = registrationMgr.registerUser("xxx81@yyy");
         users = registrationMgr.getUsers();
         assertEquals(1, users.size());
         assertEquals(users.get(0), user1);
 
 
-        User user2 = registrationMgr.registerUser("xxx9@yyy");
+        User user2 = registrationMgr.registerUser("xxx91@yyy");
         users = registrationMgr.getUsers();
         assertEquals(2, users.size());
 
