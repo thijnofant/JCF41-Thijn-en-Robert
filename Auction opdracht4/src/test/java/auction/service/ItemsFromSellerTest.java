@@ -133,12 +133,14 @@ public class ItemsFromSellerTest {
         Money mons = new Money(200, "testvaluta");
         
         Item item1 = sellerMgr.offerItem(seller, cat, omsch1);
-        
         Bid bid1 =  auctionMgr.newBid(item1, buyer, mons);
         
-        Item item2 = bid1.getItem();
+        Item item2 = auctionMgr.getItem(item1.getId());
+
+        Bid bid2 = item2.getHighestBid();
+        Item item3 = bid2.getItem();
         
-        assertEquals(item1, item2);     
-        
+        assertEquals(item1, item3);        
+        assertEquals(item1.getId(), item3.getId()); 
     }
 }

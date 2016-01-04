@@ -1,5 +1,6 @@
 package auction.domain;
 
+import java.util.Objects;
 import javax.persistence.*;
 import nl.fontys.util.Money;
 
@@ -73,14 +74,11 @@ public class Item implements Comparable {
     @Override
     public boolean equals(Object o) {
         Item i = (Item) o;
-        if (this.id == i.id && this.description == i.description 
-                && this.seller == i.seller && this.category == i.category) 
-        {
-            return true;
-        }
-        else{
-            return false;
-        }
+        return this.id.equals(i.getId())
+                && this.description.equals(i.description)
+                && this.seller.equals(i.seller)
+                && this.category.getDiscription().equals(i.getCategory().getDiscription());
+        
     }
 
     @Override
