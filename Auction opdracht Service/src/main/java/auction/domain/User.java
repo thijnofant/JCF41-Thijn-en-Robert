@@ -1,12 +1,15 @@
 package auction.domain;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name="Gebruiker") @Table(name="Gebruiker")
 @NamedQueries({
     @NamedQuery(name = "Gebruikers.count", query = "select count(a) from Gebruiker as a"),
@@ -47,7 +50,7 @@ public class User {
         }
         return false;
     }
-    
+
     public Iterator<Item> getOfferedItems(){
         return this.offeredItems.iterator();
     }

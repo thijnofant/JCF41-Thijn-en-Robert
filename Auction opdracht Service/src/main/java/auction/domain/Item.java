@@ -2,8 +2,13 @@ package auction.domain;
 
 import java.util.Objects;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import nl.fontys.util.Money;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name="AuctionItem") @Table(name="AuctionItem")
 @NamedQueries({
     @NamedQuery(name = "Items.count", query = "select count(a) from AuctionItem as a"),

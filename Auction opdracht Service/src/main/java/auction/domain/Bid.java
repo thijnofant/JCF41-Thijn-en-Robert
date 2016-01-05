@@ -1,9 +1,14 @@
 package auction.domain;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import nl.fontys.util.FontysTime;
 import nl.fontys.util.Money;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name="Bid") @Table(name="Bid")
 public class Bid {
 
@@ -42,4 +47,5 @@ public class Bid {
     public Money getAmount() {
         return amount;
     }
+    
 }
