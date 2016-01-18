@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="319.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaencription2.FXMLDocumentController">
+    <children>
+      <Button fx:id="goButton" layoutX="367.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleGoButtonClick" text="Go" />
+      <ComboBox fx:id="cbbActions" layoutX="148.0" layoutY="246.0" prefHeight="25.0" prefWidth="251.0" visibleRowCount="2" />
+      <PasswordField fx:id="tbPassword" layoutX="148.0" layoutY="212.0" prefHeight="25.0" prefWidth="251.0" />
+      <TextArea fx:id="tbMessage" layoutX="26.0" layoutY="37.0" prefHeight="170.0" prefWidth="373.0" />
+      <Label layoutX="26.0" layoutY="14.0" text="Message:" />
+      <Label layoutX="26.0" layoutY="216.0" text="Encription Password:" />
+    </children>
+</AnchorPane>
